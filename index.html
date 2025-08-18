@@ -1,278 +1,480 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Saqib Javed — Portfolio</title>
-  <meta name="description" content="Saqib Javed — MCA student and developer. Projects in ML, Android, and data. Java, Python, Firebase." />
-  <meta property="og:title" content="Saqib Javed — Portfolio" />
-  <meta property="og:description" content="Projects in ML, Android, and data. Java, Python, Firebase." />
-  <meta property="og:type" content="website" />
-  <meta name="theme-color" content="#0ea5e9" />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-  <!-- Tailwind via CDN for quick start. For production, consider self-hosting or a build step. -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <style>
-    :root { color-scheme: light dark; }
-    html { scroll-behavior: smooth; }
-    body { font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, 'Helvetica Neue', Arial, 'Noto Sans', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', sans-serif; }
-    .glass { backdrop-filter: saturate(150%) blur(10px); background: color-mix(in hsl, hsl(200 90% 55%) 12%, transparent); }
-    .card { transition: transform .2s ease, box-shadow .2s ease; }
-    .card:hover { transform: translateY(-4px); }
-    .tag { border: 1px solid rgb(99 102 241 / .25); }
-    /* Simple dark mode tweaks */
-    @media (prefers-color-scheme: dark) {
-      .glass { background: color-mix(in hsl, hsl(200 90% 55%) 18%, transparent); }
-      .tag { border-color: rgb(99 102 241 / .35); }
-    }
-  </style>
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Person",
-    "name": "Saqib Javed",
-    "jobTitle": "MCA Student / Software Developer",
-    "url": "https://<your-username>.github.io/",
-    "sameAs": [
-      "https://github.com/jvedsaqib",
-      "https://www.linkedin.com/in/jvedsaqib6291/"
-    ],
-    "email": "mailto:jvedsaqib6291@gmail.com",
-    "telephone": "+91-6291526612",
-    "alumniOf": ["Heritage Institute of Technology, Kolkata", "Gurudas College, Kolkata"]
-  }
-  </script>
-</head>
-<body class="bg-gradient-to-b from-slate-50 to-white dark:from-slate-950 dark:to-slate-900 text-slate-800 dark:text-slate-100">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Saqib Javed — Portfolio</title>
+    <meta
+      name="description"
+      content="Saqib Javed — MCA student and developer. Projects in ML, Android, and data. Java, Python, Firebase."
+    />
+    <meta property="og:title" content="Saqib Javed — Portfolio" />
+    <meta
+      property="og:description"
+      content="Projects in ML, Android, and data. Java, Python, Firebase."
+    />
+    <meta property="og:type" content="website" />
+    <meta name="theme-color" content="#0ea5e9" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Tailwind via CDN for quick start. For production, consider self-hosting or a build step. -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      :root {
+        color-scheme: light dark;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        font-family: "Inter", system-ui, -apple-system, Segoe UI, Roboto,
+          "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji",
+          "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
+      }
+      .glass {
+        backdrop-filter: saturate(150%) blur(10px);
+        background: color-mix(in hsl, hsl(200 90% 55%) 12%, transparent);
+      }
+      .card {
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+      }
+      .card:hover {
+        transform: translateY(-4px);
+      }
+      .tag {
+        border: 1px solid rgb(99 102 241 / 0.25);
+      }
+      /* Simple dark mode tweaks */
+      @media (prefers-color-scheme: dark) {
+        .glass {
+          background: color-mix(in hsl, hsl(200 90% 55%) 18%, transparent);
+        }
+        .tag {
+          border-color: rgb(99 102 241 / 0.35);
+        }
+      }
+    </style>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Saqib Javed",
+        "jobTitle": "MCA Student / Software Developer",
+        "url": "https://<your-username>.github.io/",
+        "sameAs": [
+          "https://github.com/jvedsaqib",
+          "https://www.linkedin.com/in/jvedsaqib6291/"
+        ],
+        "email": "mailto:jvedsaqib6291@gmail.com",
+        "telephone": "+91-6291526612",
+        "alumniOf": [
+          "Heritage Institute of Technology, Kolkata",
+          "Gurudas College, Kolkata"
+        ]
+      }
+    </script>
+  </head>
+  <body
+    class="bg-gradient-to-b from-slate-50 to-white dark:from-slate-950 dark:to-slate-900 text-slate-800 dark:text-slate-100"
+  >
+    <!-- Header / Nav -->
+    <header class="sticky top-0 z-50 glass">
+      <div
+        class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 py-3 flex items-center justify-between"
+      >
+        <a href="#home" class="font-extrabold tracking-tight text-xl"
+          >SJ<span class="text-sky-500">.</span></a
+        >
+        <nav class="hidden sm:flex items-center gap-6 text-sm">
+          <a class="hover:text-sky-500" href="#projects">Projects</a>
+          <a class="hover:text-sky-500" href="#skills">Skills</a>
+          <a class="hover:text-sky-500" href="#education">Education</a>
+          <a class="hover:text-sky-500" href="#contact">Contact</a>
+          <a
+            class="inline-flex items-center gap-2 px-3 py-1.5 rounded-xl border border-sky-400/50 hover:bg-sky-500/10"
+            href="assets/cv/SAQIB-JAVED-CV.pdf"
+            download
+          >
+            <span>Download CV</span>
+          </a>
+        </nav>
+      </div>
+    </header>
 
-  <!-- Header / Nav -->
-  <header class="sticky top-0 z-50 glass">
-    <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 py-3 flex items-center justify-between">
-      <a href="#home" class="font-extrabold tracking-tight text-xl">SJ<span class="text-sky-500">.</span></a>
-      <nav class="hidden sm:flex items-center gap-6 text-sm">
-        <a class="hover:text-sky-500" href="#projects">Projects</a>
-        <a class="hover:text-sky-500" href="#skills">Skills</a>
-        <a class="hover:text-sky-500" href="#education">Education</a>
-        <a class="hover:text-sky-500" href="#contact">Contact</a>
-        <a class="inline-flex items-center gap-2 px-3 py-1.5 rounded-xl border border-sky-400/50 hover:bg-sky-500/10" href="assets/cv/SAQIB-JAVED-CV.pdf" download>
-          <span>Download CV</span>
-        </a>
-      </nav>
-    </div>
-  </header>
-
-  <!-- Hero -->
-  <section id="home" class="relative overflow-hidden">
-    <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 pt-16 pb-10 sm:pt-24 sm:pb-16">
-      <div class="grid md:grid-cols-12 items-center gap-8">
-        <div class="md:col-span-7">
-          <div class="inline-flex items-center gap-2 rounded-full px-3 py-1 text-xs bg-sky-500/10 text-sky-700 dark:text-sky-300 border border-sky-500/20">
-            <span>👋 Hi, I’m</span>
-            <span class="font-semibold">Saqib Javed</span>
+    <!-- Hero -->
+    <section id="home" class="relative overflow-hidden">
+      <div
+        class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 pt-16 pb-10 sm:pt-24 sm:pb-16"
+      >
+        <div class="grid md:grid-cols-12 items-center gap-8">
+          <div class="md:col-span-7">
+            <div
+              class="inline-flex items-center gap-2 rounded-full px-3 py-1 text-xs bg-sky-500/10 text-sky-700 dark:text-sky-300 border border-sky-500/20"
+            >
+              <span>👋 Hi, I’m</span>
+              <span class="font-semibold">Saqib Javed</span>
+            </div>
+            <h1 class="mt-4 text-4xl sm:text-5xl font-extrabold tracking-tight">
+              Building <span class="text-sky-500">useful</span> things with
+              <span
+                class="bg-clip-text text-transparent bg-gradient-to-r from-indigo-500 to-sky-500"
+                >Java, Python & ML</span
+              >
+            </h1>
+            <p
+              class="mt-4 text-base sm:text-lg text-slate-600 dark:text-slate-300 max-w-2xl"
+            >
+              Postgraduate in Computer Applications from Heritage Institute of
+              Technology with interests in machine learning, Android, and
+              data-driven applications. Open to collaborations and professional
+              opportunities.
+            </p>
+            <div class="mt-6 flex flex-wrap items-center gap-3">
+              <a
+                href="#projects"
+                class="px-5 py-2.5 rounded-2xl bg-sky-600 hover:bg-sky-700 text-white font-semibold shadow"
+              >
+                See Projects
+              </a>
+              <a
+                href="#contact"
+                class="px-5 py-2.5 rounded-2xl border border-slate-300/60 dark:border-slate-700 hover:border-sky-500/60 hover:text-sky-500"
+              >
+                Contact
+              </a>
+            </div>
           </div>
-          <h1 class="mt-4 text-4xl sm:text-5xl font-extrabold tracking-tight">
-            Building <span class="text-sky-500">useful</span> things with
-            <span class="bg-clip-text text-transparent bg-gradient-to-r from-indigo-500 to-sky-500">Java, Python & ML</span>
-          </h1>
-          <p class="mt-4 text-base sm:text-lg text-slate-600 dark:text-slate-300 max-w-2xl">
-            MCA student at Heritage Institute of Technology. Interests in machine learning, Android, and data-driven apps. Open to internships and collaborations.
-          </p>
-          <div class="mt-6 flex flex-wrap items-center gap-3">
-            <a href="#projects" class="px-5 py-2.5 rounded-2xl bg-sky-600 hover:bg-sky-700 text-white font-semibold shadow">
-              See Projects
-            </a>
-            <a href="mailto:jvedsaqib6291@gmail.com" class="px-5 py-2.5 rounded-2xl border border-slate-300/60 dark:border-slate-700 hover:border-sky-500/60 hover:text-sky-500">
-              Email Me
-            </a>
-            <a href="https://github.com/jvedsaqib" class="px-5 py-2.5 rounded-2xl border border-slate-300/60 dark:border-slate-700 hover:border-sky-500/60 hover:text-sky-500" target="_blank" rel="noreferrer">
-              GitHub
-            </a>
-            <a href="https://www.linkedin.com/in/jvedsaqib6291/" class="px-5 py-2.5 rounded-2xl border border-slate-300/60 dark:border-slate-700 hover:border-sky-500/60 hover:text-sky-500" target="_blank" rel="noreferrer">
-              LinkedIn
-            </a>
-          </div>
-        </div>
-        <div class="md:col-span-5">
-          <div class="relative">
-            <div class="absolute -inset-4 blur-2xl bg-sky-500/20 rounded-full"></div>
-            <div class="relative rounded-3xl p-6 border border-slate-200/80 dark:border-slate-800 bg-white/70 dark:bg-slate-900/60 shadow-xl">
-              <div class="grid grid-cols-2 gap-3 text-sm">
-                <div class="p-4 rounded-2xl bg-slate-50 dark:bg-slate-800/60 card">
-                  <div class="text-xs text-slate-500">Languages</div>
-                  <div class="mt-1 font-semibold">Java, Python</div>
-                </div>
-                <div class="p-4 rounded-2xl bg-slate-50 dark:bg-slate-800/60 card">
-                  <div class="text-xs text-slate-500">Databases</div>
-                  <div class="mt-1 font-semibold">MySQL, Firebase</div>
-                </div>
-                <div class="p-4 rounded-2xl bg-slate-50 dark:bg-slate-800/60 card">
-                  <div class="text-xs text-slate-500">Tools</div>
-                  <div class="mt-1 font-semibold">Android Studio, Eclipse, Colab</div>
-                </div>
-                <div class="p-4 rounded-2xl bg-slate-50 dark:bg-slate-800/60 card">
-                  <div class="text-xs text-slate-500">Focus</div>
-                  <div class="mt-1 font-semibold">ML • Android • Data</div>
+          <div class="md:col-span-5">
+            <div class="md:col-span-5 flex justify-center pb-10">
+              <div class="relative">
+                <div
+                  class="absolute -inset-4 blur-2xl bg-sky-500/20 rounded-2xl"
+                ></div>
+                <img
+                  src="assets/images/saqib.jpg"
+                  alt="Saqib Javed"
+                  class="relative w-100 h-80 rounded-full object-cover border-2 border-sky-500 shadow-xl"
+                />
+              </div>
+            </div>
+            <div class="relative">
+              <div
+                class="absolute -inset-4 blur-2xl bg-sky-500/20 rounded-full"
+              ></div>
+              <div
+                class="relative rounded-3xl p-6 border border-slate-200/80 dark:border-slate-800 bg-white/70 dark:bg-slate-900/60 shadow-xl"
+              >
+                <div class="grid grid-cols-2 gap-3 text-sm">
+                  <div
+                    class="p-4 rounded-2xl bg-slate-50 dark:bg-slate-800/60 card"
+                  >
+                    <div class="text-xs text-slate-500">Languages</div>
+                    <div class="mt-1 font-semibold">Java, Python</div>
+                  </div>
+                  <div
+                    class="p-4 rounded-2xl bg-slate-50 dark:bg-slate-800/60 card"
+                  >
+                    <div class="text-xs text-slate-500">Databases</div>
+                    <div class="mt-1 font-semibold">MySQL, Firebase</div>
+                  </div>
+                  <div
+                    class="p-4 rounded-2xl bg-slate-50 dark:bg-slate-800/60 card"
+                  >
+                    <div class="text-xs text-slate-500">Tools</div>
+                    <div class="mt-1 font-semibold">
+                      Android Studio, Eclipse, Colab
+                    </div>
+                  </div>
+                  <div
+                    class="p-4 rounded-2xl bg-slate-50 dark:bg-slate-800/60 card"
+                  >
+                    <div class="text-xs text-slate-500">Focus</div>
+                    <div class="mt-1 font-semibold">ML • Android • Data</div>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Projects -->
-  <section id="projects" class="py-16 sm:py-20">
-    <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-      <div class="flex items-end justify-between gap-4">
-        <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight">Projects</h2>
-        <a href="projects/index.html" target="_blank" rel="noreferrer" class="text-sm hover:text-sky-500">View all →</a>
-      </div>
-      <div class="mt-8 grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-        <!-- Project 1 -->
-        <article class="card rounded-3xl p-6 border border-slate-200 dark:border-slate-800 bg-white/70 dark:bg-slate-900/60 shadow">
-          <div class="text-xs text-slate-500">ML • NLP</div>
-          <h3 class="mt-1 text-xl font-bold">Bangla News Classifier</h3>
-          <p class="mt-2 text-sm text-slate-600 dark:text-slate-300">Comparative study of models (LSTM, Naive Bayes, Random Forest, Logistic Regression) to classify Bengali news into politics, sports, entertainment, tech.</p>
-          <div class="mt-3 flex flex-wrap gap-2 text-xs">
-            <span class="tag rounded-full px-2 py-1">Python</span>
-            <span class="tag rounded-full px-2 py-1">TensorFlow / Sklearn</span>
-            <span class="tag rounded-full px-2 py-1">NLP</span>
-          </div>
-          <div class="mt-4 flex gap-3">
-            <a class="inline-flex items-center gap-2 text-sm font-semibold hover:text-sky-500" href="https://github.com/jvedsaqib/bangla_news_classifier" target="_blank" rel="noreferrer">Repository →</a>
-          </div>
-        </article>
-        <!-- Project 2 -->
-        <article class="card rounded-3xl p-6 border border-slate-200 dark:border-slate-800 bg-white/70 dark:bg-slate-900/60 shadow">
-          <div class="text-xs text-slate-500">Android</div>
-          <h3 class="mt-1 text-xl font-bold">BoiiMela</h3>
-          <p class="mt-2 text-sm text-slate-600 dark:text-slate-300">Android app for buying & selling second-hand books. Led backend and database; used Java, XML, Firebase.</p>
-          <div class="mt-3 flex flex-wrap gap-2 text-xs">
-            <span class="tag rounded-full px-2 py-1">Java</span>
-            <span class="tag rounded-full px-2 py-1">Firebase</span>
-            <span class="tag rounded-full px-2 py-1">Android</span>
-          </div>
-          <div class="mt-4 flex gap-3">
-            <a class="inline-flex items-center gap-2 text-sm font-semibold hover:text-sky-500" href="https://github.com/jvedsaqib/BoiiMela" target="_blank" rel="noreferrer">Repository →</a>
-          </div>
-        </article>
-        <!-- Project 3 -->
-        <article class="card rounded-3xl p-6 border border-slate-200 dark:border-slate-800 bg-white/70 dark:bg-slate-900/60 shadow">
-          <div class="text-xs text-slate-500">ML • Sentiment</div>
-          <h3 class="mt-1 text-xl font-bold">Bengali Celebrity Opinion Profiling</h3>
-          <p class="mt-2 text-sm text-slate-600 dark:text-slate-300">Analyzed YouTube comments in Bengali to profile public sentiment around celebrities. Led scraping, model training; used FastText and BERT.</p>
-          <div class="mt-3 flex flex-wrap gap-2 text-xs">
-            <span class="tag rounded-full px-2 py-1">FastText</span>
-            <span class="tag rounded-full px-2 py-1">BERT</span>
-            <span class="tag rounded-full px-2 py-1">Python</span>
-          </div>
-          <div class="mt-4 flex gap-3">
-            <a class="inline-flex items-center gap-2 text-sm font-semibold hover:text-sky-500" href="#" aria-disabled="true">(Private / Coming soon)</a>
-          </div>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <!-- Skills -->
-  <section id="skills" class="py-16 sm:py-20 bg-slate-50/60 dark:bg-slate-800/40">
-    <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-      <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight">Technical Skills</h2>
-      <div class="mt-6 grid md:grid-cols-3 gap-6 text-sm">
-        <div class="rounded-3xl p-6 border border-slate-200 dark:border-slate-700 bg-white/70 dark:bg-slate-900/50">
-          <h3 class="font-bold">Languages</h3>
-          <ul class="mt-3 space-y-1 list-disc list-inside">
-            <li>Java</li>
-            <li>Python</li>
-          </ul>
+    <!-- Projects -->
+    <section id="projects" class="py-16 sm:py-20">
+      <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+        <div class="flex items-end justify-between gap-4">
+          <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight">
+            Projects
+          </h2>
+          <a
+            href="projects/index.html"
+            rel="noreferrer"
+            class="text-sm hover:text-sky-500"
+            >View all →</a
+          >
         </div>
-        <div class="rounded-3xl p-6 border border-slate-200 dark:border-slate-700 bg-white/70 dark:bg-slate-900/50">
-          <h3 class="font-bold">Tools</h3>
-          <ul class="mt-3 space-y-1 list-disc list-inside">
-            <li>Android Studio</li>
-            <li>Eclipse</li>
-            <li>Google Colab</li>
-          </ul>
-        </div>
-        <div class="rounded-3xl p-6 border border-slate-200 dark:border-slate-700 bg-white/70 dark:bg-slate-900/50">
-          <h3 class="font-bold">Databases</h3>
-          <ul class="mt-3 space-y-1 list-disc list-inside">
-            <li>MySQL</li>
-            <li>Firebase</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Education & Achievements -->
-  <section id="education" class="py-16 sm:py-20">
-    <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-      <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight">Education & Achievements</h2>
-      <div class="mt-6 grid md:grid-cols-2 gap-6">
-        <div class="rounded-3xl p-6 border border-slate-200 dark:border-slate-800 bg-white/70 dark:bg-slate-900/60">
-          <h3 class="font-bold">Education</h3>
-          <ul class="mt-3 space-y-3 text-sm">
-            <li>
-              <div class="font-semibold">MCA — Heritage Institute of Technology (MAKAUT)</div>
-              <div class="text-slate-600 dark:text-slate-300">2023 – Present • 91.9%</div>
-            </li>
-            <li>
-              <div class="font-semibold">B.Sc. Computer Science — Gurudas College (University of Calcutta)</div>
-              <div class="text-slate-600 dark:text-slate-300">2020 – 2023 • 81.17%</div>
-            </li>
-            <li>
-              <div class="font-semibold">Higher Secondary — Modern School (WBCHSE)</div>
-              <div class="text-slate-600 dark:text-slate-300">2018 – 2020 • 82.8%</div>
-            </li>
-            <li>
-              <div class="font-semibold">Secondary — Modern School (WBBSE)</div>
-              <div class="text-slate-600 dark:text-slate-300">2005 – 2018 • 80.71%</div>
-            </li>
-          </ul>
-        </div>
-        <div class="rounded-3xl p-6 border border-slate-200 dark:border-slate-800 bg-white/70 dark:bg-slate-900/60">
-          <h3 class="font-bold">Achievements & Activities</h3>
-          <ul class="mt-3 space-y-3 text-sm">
-            <li>Bronze Medalist — B.Sc. Computer Science (2023)</li>
-            <li>Top 50 Mentor — GSSoC '24 Extended</li>
-            <li>Mentor — GirlsScript Summer of Code (Oct 2024)</li>
-            <li>Participant — Prototyped a chatbot concept and successfully built the image captioning module
- during a 24-hour hackathon, applying computer vision and NLP techniques.</li>
-          </ul>
+        <div class="mt-8 grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <!-- Project 1 -->
+          <article
+            class="card rounded-3xl p-6 border border-slate-200 dark:border-slate-800 bg-white/70 dark:bg-slate-900/60 shadow"
+          >
+            <div class="text-xs text-slate-500">ML • NLP</div>
+            <h3 class="mt-1 text-xl font-bold">Bangla News Classifier</h3>
+            <p class="mt-2 text-sm text-slate-600 dark:text-slate-300">
+              Comparative study of models (LSTM, Naive Bayes, Random Forest,
+              Logistic Regression) to classify Bengali news into politics,
+              sports, entertainment, tech.
+            </p>
+            <div class="mt-3 flex flex-wrap gap-2 text-xs">
+              <span class="tag rounded-full px-2 py-1">Python</span>
+              <span class="tag rounded-full px-2 py-1"
+                >TensorFlow / Sklearn</span
+              >
+              <span class="tag rounded-full px-2 py-1">NLP</span>
+            </div>
+            <div class="mt-4 flex gap-3">
+              <a
+                class="inline-flex items-center gap-2 text-sm font-semibold hover:text-sky-500"
+                href="https://github.com/jvedsaqib/bangla_news_classifier"
+                target="_blank"
+                rel="noreferrer"
+                >Repository →</a
+              >
+            </div>
+          </article>
+          <!-- Project 2 -->
+          <article
+            class="card rounded-3xl p-6 border border-slate-200 dark:border-slate-800 bg-white/70 dark:bg-slate-900/60 shadow"
+          >
+            <div class="text-xs text-slate-500">Android</div>
+            <h3 class="mt-1 text-xl font-bold">BoiiMela</h3>
+            <p class="mt-2 text-sm text-slate-600 dark:text-slate-300">
+              Android app for buying & selling second-hand books. Led backend
+              and database; used Java, XML, Firebase.
+            </p>
+            <div class="mt-3 flex flex-wrap gap-2 text-xs">
+              <span class="tag rounded-full px-2 py-1">Java</span>
+              <span class="tag rounded-full px-2 py-1">Firebase</span>
+              <span class="tag rounded-full px-2 py-1">Android</span>
+            </div>
+            <div class="mt-4 flex gap-3">
+              <a
+                class="inline-flex items-center gap-2 text-sm font-semibold hover:text-sky-500"
+                href="https://github.com/jvedsaqib/BoiiMela"
+                target="_blank"
+                rel="noreferrer"
+                >Repository →</a
+              >
+            </div>
+          </article>
+          <!-- Project 3 -->
+          <article
+            class="card rounded-3xl p-6 border border-slate-200 dark:border-slate-800 bg-white/70 dark:bg-slate-900/60 shadow"
+          >
+            <div class="text-xs text-slate-500">ML • Sentiment</div>
+            <h3 class="mt-1 text-xl font-bold">
+              Bengali Celebrity Opinion Profiling
+            </h3>
+            <p class="mt-2 text-sm text-slate-600 dark:text-slate-300">
+              Analyzed YouTube comments in Bengali to profile public sentiment
+              around celebrities. Led scraping, model training; used FastText
+              and BERT.
+            </p>
+            <div class="mt-3 flex flex-wrap gap-2 text-xs">
+              <span class="tag rounded-full px-2 py-1">FastText</span>
+              <span class="tag rounded-full px-2 py-1">BERT</span>
+              <span class="tag rounded-full px-2 py-1">Python</span>
+            </div>
+            <div class="mt-4 flex gap-3">
+              <a
+                class="inline-flex items-center gap-2 text-sm font-semibold hover:text-sky-500"
+                href="#"
+                aria-disabled="true"
+                >(Private / Coming soon)</a
+              >
+            </div>
+          </article>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Contact -->
-  <section id="contact" class="py-16 sm:py-20 bg-slate-50/60 dark:bg-slate-800/40">
-    <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-      <div class="rounded-3xl p-6 md:p-10 border border-slate-200 dark:border-slate-800 bg-white/70 dark:bg-slate-900/60">
-        <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight">Contact</h2>
-        <p class="mt-3 text-slate-600 dark:text-slate-300">I’m open to internships, collaborations, and interesting problems.</p>
-        <div class="mt-6 grid md:grid-cols-2 gap-6 text-sm">
-          <a class="card rounded-2xl p-4 border border-slate-200 dark:border-slate-700 hover:border-sky-400/60" href="mailto:jvedsaqib6291@gmail.com">📧 jvedsaqib6291@gmail.com</a>
-          <a class="card rounded-2xl p-4 border border-slate-200 dark:border-slate-700 hover:border-sky-400/60" href="tel:+916291526612">📱 +91 62915 26612</a>
-          <a class="card rounded-2xl p-4 border border-slate-200 dark:border-slate-700 hover:border-sky-400/60" href="https://github.com/jvedsaqib" target="_blank" rel="noreferrer">🐙 github.com/jvedsaqib</a>
-          <a class="card rounded-2xl p-4 border border-slate-200 dark:border-slate-700 hover:border-sky-400/60" href="https://www.linkedin.com/in/jvedsaqib6291/" target="_blank" rel="noreferrer">💼 linkedin.com/in/jvedsaqib6291</a>
+    <!-- Skills -->
+    <section
+      id="skills"
+      class="py-16 sm:py-20 bg-slate-50/60 dark:bg-slate-800/40"
+    >
+      <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+        <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight">
+          Technical Skills
+        </h2>
+        <div class="mt-6 grid md:grid-cols-3 gap-6 text-sm">
+          <div
+            class="rounded-3xl p-6 border border-slate-200 dark:border-slate-700 bg-white/70 dark:bg-slate-900/50"
+          >
+            <h3 class="font-bold">Languages</h3>
+            <ul class="mt-3 space-y-1 list-disc list-inside">
+              <li>Java</li>
+              <li>Python</li>
+            </ul>
+          </div>
+          <div
+            class="rounded-3xl p-6 border border-slate-200 dark:border-slate-700 bg-white/70 dark:bg-slate-900/50"
+          >
+            <h3 class="font-bold">Tools</h3>
+            <ul class="mt-3 space-y-1 list-disc list-inside">
+              <li>Android Studio</li>
+              <li>Eclipse</li>
+              <li>Google Colab</li>
+            </ul>
+          </div>
+          <div
+            class="rounded-3xl p-6 border border-slate-200 dark:border-slate-700 bg-white/70 dark:bg-slate-900/50"
+          >
+            <h3 class="font-bold">Databases</h3>
+            <ul class="mt-3 space-y-1 list-disc list-inside">
+              <li>MySQL</li>
+              <li>Firebase</li>
+            </ul>
+          </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Footer -->
-  <footer class="py-10">
-    <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 text-center text-sm text-slate-500">
-      <p>© <span id="year"></span> Saqib Javed. Built with ❤️ on GitHub Pages.</p>
-    </div>
-  </footer>
+    <!-- Education & Achievements -->
+    <section id="education" class="py-16 sm:py-20">
+      <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+        <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight">
+          Education & Achievements
+        </h2>
+        <div class="mt-6 grid md:grid-cols-2 gap-6">
+          <div
+            class="rounded-3xl p-6 border border-slate-200 dark:border-slate-800 bg-white/70 dark:bg-slate-900/60"
+          >
+            <h3 class="font-bold">Education</h3>
+            <ul class="mt-3 space-y-3 text-sm">
+              <li>
+                <div class="font-semibold">
+                  MCA — Heritage Institute of Technology (MAKAUT)
+                </div>
+                <div class="text-slate-600 dark:text-slate-300">
+                  2023 – Present • 91.9%
+                </div>
+              </li>
+              <li>
+                <div class="font-semibold">
+                  B.Sc. Computer Science — Gurudas College (University of
+                  Calcutta)
+                </div>
+                <div class="text-slate-600 dark:text-slate-300">
+                  2020 – 2023 • 81.17%
+                </div>
+              </li>
+              <li>
+                <div class="font-semibold">
+                  Higher Secondary — Modern School (WBCHSE)
+                </div>
+                <div class="text-slate-600 dark:text-slate-300">
+                  2018 – 2020 • 82.8%
+                </div>
+              </li>
+              <li>
+                <div class="font-semibold">
+                  Secondary — Modern School (WBBSE)
+                </div>
+                <div class="text-slate-600 dark:text-slate-300">
+                  2005 – 2018 • 80.71%
+                </div>
+              </li>
+            </ul>
+          </div>
+          <div
+            class="rounded-3xl p-6 border border-slate-200 dark:border-slate-800 bg-white/70 dark:bg-slate-900/60"
+          >
+            <h3 class="font-bold">Achievements & Activities</h3>
+            <ul class="mt-3 space-y-3 text-sm">
+              <li>Bronze Medalist — B.Sc. Computer Science (2023)</li>
+              <li>Top 50 Mentor — GSSoC '24 Extended</li>
+              <li>Mentor — GirlsScript Summer of Code (Oct 2024)</li>
+              <li>
+                Participant — Prototyped a chatbot concept and successfully
+                built the image captioning module during a 24-hour hackathon,
+                applying computer vision and NLP techniques.
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
 
-  <script>
-    document.getElementById('year').textContent = new Date().getFullYear();
-  </script>
-</body>
+    <!-- Contact -->
+    <section
+      id="contact"
+      class="py-16 sm:py-20 bg-slate-50/60 dark:bg-slate-800/40"
+    >
+      <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+        <div
+          class="rounded-3xl p-6 md:p-10 border border-slate-200 dark:border-slate-800 bg-white/70 dark:bg-slate-900/60"
+        >
+          <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight">
+            Contact
+          </h2>
+          <p class="mt-3 text-slate-600 dark:text-slate-300">
+            I’m open to internships, collaborations, and interesting problems.
+          </p>
+          <div class="mt-6 grid md:grid-cols-2 gap-6 text-sm">
+            <a
+              class="card rounded-2xl p-4 border border-slate-200 dark:border-slate-700 hover:border-sky-400/60"
+              href="mailto:jvedsaqib6291@gmail.com"
+              >📧 jvedsaqib6291@gmail.com</a
+            >
+            <a
+              class="card rounded-2xl p-4 border border-slate-200 dark:border-slate-700 hover:border-sky-400/60"
+              href="tel:+916291526612"
+              >📱 +91 62915 26612</a
+            >
+            <a
+              class="card rounded-2xl p-4 border border-slate-200 dark:border-slate-700 hover:border-sky-400/60"
+              href="https://github.com/jvedsaqib"
+              target="_blank"
+              rel="noreferrer"
+              >🐙 github.com/jvedsaqib</a
+            >
+            <a
+              class="card rounded-2xl p-4 border border-slate-200 dark:border-slate-700 hover:border-sky-400/60"
+              href="https://www.linkedin.com/in/jvedsaqib6291/"
+              target="_blank"
+              rel="noreferrer"
+              >💼 linkedin.com/in/jvedsaqib6291</a
+            >
+            <a
+              class="card rounded-2xl p-4 border border-slate-200 dark:border-slate-700 hover:border-sky-400/60"
+              href="https://instagram.com/saqib_javed.exe/"
+              target="_blank"
+              rel="noreferrer"
+              >🚩 instagram.com/saqib_javed.exe</a
+            >
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-10">
+      <div
+        class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 text-center text-sm text-slate-500"
+      >
+        <p>
+          © <span id="year"></span> Saqib Javed. Built with ❤️ on GitHub Pages.
+        </p>
+      </div>
+    </footer>
+
+    <script>
+      document.getElementById("year").textContent = new Date().getFullYear();
+    </script>
+  </body>
 </html>
