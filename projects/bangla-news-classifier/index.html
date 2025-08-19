@@ -16,6 +16,11 @@
     <meta property="og:type" content="website" />
     <meta name="theme-color" content="#0ea5e9" />
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts@3.46.0/dist/apexcharts.min.js"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
     <style>
       html {
         scroll-behavior: smooth;
@@ -23,11 +28,23 @@
       .card {
         transition: transform 0.2s ease, box-shadow 0.2s ease;
       }
+      .glass {
+        backdrop-filter: saturate(150%) blur(10px);
+        background: color-mix(in hsl, hsl(200 90% 55%) 12%, transparent);
+      }
       .card:hover {
         transform: translateY(-4px);
       }
       .tag {
         border: 1px solid rgb(99 102 241 / 0.25);
+      }
+      @media (prefers-color-scheme: dark) {
+        .glass {
+          background: color-mix(in hsl, hsl(200 90% 55%) 18%, transparent);
+        }
+        .tag {
+          border-color: rgb(99 102 241 / 0.35);
+        }
       }
     </style>
   </head>
@@ -41,7 +58,7 @@
       <div
         class="max-w-6xl mx-auto flex items-center justify-between px-6 py-3"
       >
-        <a href="../.." class="font-extrabold text-xl"
+        <a href="../" class="font-extrabold tracking-tight text-xl"
           >SJ<span class="text-sky-500">.</span></a
         >
         <nav class="hidden sm:flex gap-6 text-sm">
@@ -864,6 +881,166 @@ svm_model = SVC(kernel="linear", C=1.0)
           achieved <b>91% accuracy</b>, highest among all models.
         </p>
       </div>
+      <div class="flex justify-around">
+        <div
+          class="max-w-2xl mt-4 w-full bg-gradient-to-br from-gray-900 via-gray-800 to-black rounded-2xl shadow-xl p-6 text-white"
+        >
+          <!-- Header -->
+          <div class="flex justify-between pb-4 mb-4 border-b border-gray-700">
+            <div class="flex items-center">
+              <div
+                class="w-12 h-12 rounded-lg bg-gradient-to-r from-green-400 to-emerald-600 flex items-center justify-center me-3 shadow-lg shadow-emerald-500/50 hover:scale-110 transition-transform"
+              >
+                <svg
+                  class="w-6 h-6 text-white"
+                  aria-hidden="true"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <!-- Outer circle (accuracy target) -->
+                  <circle
+                    cx="12"
+                    cy="12"
+                    r="10"
+                    stroke="white"
+                    stroke-width="2"
+                    fill="none"
+                  />
+                  <!-- Middle circle -->
+                  <circle
+                    cx="12"
+                    cy="12"
+                    r="6"
+                    stroke="white"
+                    stroke-width="2"
+                    fill="none"
+                  />
+                  <!-- Inner dot -->
+                  <circle cx="12" cy="12" r="2" fill="white" />
+                  <!-- Arrow hitting the center -->
+                  <path
+                    d="M16 8 L20 4 M18 4 L20 4 L20 6"
+                    stroke="white"
+                    stroke-width="2"
+                  />
+                </svg>
+              </div>
+
+              <div>
+                <h5 class="leading-none text-2xl font-bold text-white pb-1">
+                  Model Accuracy
+                </h5>
+                <p class="text-sm font-normal text-gray-400">
+                  Comparison of ML Models
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Chart -->
+          <div id="column-chart"></div>
+
+          <!-- Footer -->
+          <div class="pt-4 text-sm text-gray-400 text-center">
+            LSTM performs best (91%), while RF & NB lag slightly (85%).
+          </div>
+        </div>
+      </div>
+
+      <script>
+        const options = {
+          series: [
+            {
+              name: "Accuracy",
+              data: [
+                { x: "LR", y: 90 },
+                { x: "RF", y: 85 },
+                { x: "NB", y: 85 },
+                { x: "SVM", y: 89 },
+                { x: "LSTM", y: 91 },
+              ],
+            },
+          ],
+          chart: {
+            type: "bar",
+            height: "320px",
+            fontFamily: "Inter, sans-serif",
+            toolbar: { show: false },
+          },
+          plotOptions: {
+            bar: {
+              horizontal: false,
+              columnWidth: "55%",
+              borderRadius: 6,
+              distributed: true,
+            },
+          },
+          colors: ["#06b6d4", "#8b5cf6", "#f43f5e", "#22c55e", "#f59e0b"],
+          tooltip: {
+            y: {
+              formatter: (val) => `${val}%`,
+            },
+          },
+          dataLabels: {
+            enabled: true,
+            formatter: (val) => `${val}%`,
+            style: {
+              fontSize: "12px",
+              colors: ["#fff"],
+            },
+          },
+          xaxis: {
+            labels: {
+              style: {
+                colors: "#9ca3af",
+                fontSize: "12px",
+              },
+            },
+          },
+          yaxis: {
+            labels: {
+              formatter: (val) => `${val}%`,
+              style: {
+                colors: "#9ca3af",
+              },
+            },
+            max: 100,
+          },
+          grid: {
+            borderColor: "#374151",
+            strokeDashArray: 4,
+          },
+          fill: {
+            opacity: 0.9,
+            type: "gradient",
+            gradient: {
+              shade: "dark",
+              type: "vertical",
+              gradientToColors: [
+                "#22d3ee",
+                "#a855f7",
+                "#fb7185",
+                "#4ade80",
+                "#facc15",
+              ],
+              opacityFrom: 0.9,
+              opacityTo: 0.7,
+            },
+          },
+        };
+
+        if (
+          document.getElementById("column-chart") &&
+          typeof ApexCharts !== "undefined"
+        ) {
+          const chart = new ApexCharts(
+            document.getElementById("column-chart"),
+            options
+          );
+          chart.render();
+        }
+      </script>
     </section>
 
     <section id="future" class="py-16">
@@ -917,6 +1094,201 @@ svm_model = SVC(kernel="linear", C=1.0)
           </li>
         </ul>
       </div>
+    </section>
+
+    <section id="repo" class="mt-3 justify-center flex">
+      <!-- GitHub Repo Card -->
+      <a
+        href="https://github.com/jvedsaqib/bangla_news_classifier"
+        target="_blank"
+        rel="noopener"
+        class="group block max-w-xl w-full rounded-2xl border border-slate-200 dark:border-slate-800 overflow-hidden bg-white/70 dark:bg-slate-900/60 shadow hover:shadow-xl transition-shadow"
+      >
+        <div class="relative p-5">
+          <!-- Glow -->
+          <div
+            class="pointer-events-none absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity"
+          >
+            <div
+              class="absolute -inset-1 bg-gradient-to-r from-cyan-500/20 via-purple-500/20 to-transparent blur-2xl"
+            ></div>
+          </div>
+
+          <!-- Header -->
+          <div class="flex items-center">
+            <div
+              class="w-12 h-12 rounded-lg bg-gradient-to-r from-cyan-500 to-purple-600 flex items-center justify-center me-3 shadow-md"
+            >
+              <!-- GitHub mark -->
+              <svg
+                class="w-7 h-7 text-white"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                aria-hidden="true"
+              >
+                <path
+                  fill-rule="evenodd"
+                  clip-rule="evenodd"
+                  d="M12 .5A11.5 11.5 0 0 0 .5 12a11.5 11.5 0 0 0 7.86 10.93c.58.1.79-.25.79-.56v-2c-3.2.7-3.87-1.39-3.87-1.39-.53-1.36-1.3-1.72-1.3-1.72-1.06-.73.08-.72.08-.72 1.17.08 1.79 1.21 1.79 1.21 1.04 1.78 2.73 1.26 3.4.96.1-.76.41-1.26.75-1.54-2.55-.29-5.23-1.28-5.23-5.7 0-1.26.45-2.3 1.2-3.12-.12-.29-.52-1.47.11-3.05 0 0 .98-.31 3.2 1.19a11.1 11.1 0 0 1 5.83 0c2.22-1.5 3.2-1.19 3.2-1.19.63 1.58.23 2.76.11 3.05.75.82 1.2 1.86 1.2 3.12 0 4.43-2.68 5.41-5.24 5.69.42.36.8 1.07.8 2.16v3.2c0 .31.21.67.8.56A11.5 11.5 0 0 0 23.5 12 11.5 11.5 0 0 0 12 .5Z"
+                />
+              </svg>
+            </div>
+            <div>
+              <h3 class="text-lg font-bold text-slate-900 dark:text-slate-100">
+                bangla_news_classifier
+              </h3>
+              <p class="text-xs text-slate-500 dark:text-slate-400">
+                github.com/jvedsaqib/bangla_news_classifier
+              </p>
+            </div>
+            <span
+              class="ms-auto text-xs px-2 py-1 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-700"
+            >
+              Public
+            </span>
+          </div>
+
+          <!-- Description -->
+          <p
+            id="repo-desc"
+            class="mt-4 text-sm text-slate-700 dark:text-slate-300 line-clamp-2"
+          >
+            Bangla news article classification with ML/NLP (LR, RF, NB, SVM,
+            LSTM).
+          </p>
+
+          <!-- Badges -->
+          <div class="mt-4 flex flex-wrap items-center gap-2 text-xs">
+            <!-- Stars -->
+            <span
+              class="inline-flex items-center gap-1 rounded-full border border-slate-200 dark:border-slate-700 px-2 py-1 bg-white/60 dark:bg-slate-800/60"
+            >
+              <svg
+                class="w-4 h-4"
+                viewBox="0 0 20 20"
+                fill="currentColor"
+                aria-hidden="true"
+              >
+                <path
+                  d="m9.049 2.927 1.286 3.953h4.153l-3.36 2.442 1.285 3.953-3.364-2.444-3.362 2.444 1.285-3.953-3.36-2.442h4.153l1.284-3.953Z"
+                />
+              </svg>
+              <span id="repo-stars">—</span>
+            </span>
+            <!-- Forks -->
+            <span
+              class="inline-flex items-center gap-1 rounded-full border border-slate-200 dark:border-slate-700 px-2 py-1 bg-white/60 dark:bg-slate-800/60"
+            >
+              <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
+                <path
+                  d="M7 3a3 3 0 0 0 0 6c.74 0 1.42-.27 1.95-.72A5.01 5.01 0 0 0 11 12v3.1A3 3 0 1 0 13 18v-6a3 3 0 0 1 3-3h1a3 3 0 1 0-2.82-3.99A5.01 5.01 0 0 1 11 9a5.01 5.01 0 0 1-2.05-3.71A3 3 0 0 0 7 3Z"
+                />
+              </svg>
+              <span id="repo-forks">—</span>
+            </span>
+            <!-- License -->
+            <span
+              class="inline-flex items-center gap-1 rounded-full border border-slate-200 dark:border-slate-700 px-2 py-1 bg-white/60 dark:bg-slate-800/60"
+            >
+              <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M6 2a2 2 0 0 0-2 2v16l8-3 8 3V4a2 2 0 0 0-2-2H6z" />
+              </svg>
+              <span id="repo-license">—</span>
+            </span>
+            <!-- Updated -->
+            <span
+              class="inline-flex items-center gap-1 rounded-full border border-slate-200 dark:border-slate-700 px-2 py-1 bg-white/60 dark:bg-slate-800/60"
+            >
+              <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
+                <path
+                  d="M12 8v5l4 2M12 22a10 10 0 1 0 0-20 10 10 0 0 0 0 20Z"
+                />
+              </svg>
+              <span id="repo-updated">—</span>
+            </span>
+          </div>
+
+          <!-- Topics -->
+          <div id="repo-topics" class="mt-3 flex flex-wrap gap-2">
+            <!-- Filled by JS -->
+          </div>
+        </div>
+      </a>
+
+      <script>
+        (async () => {
+          const el = (id) => document.getElementById(id);
+          const topicsWrap = document.getElementById("repo-topics");
+
+          try {
+            const res = await fetch(
+              "https://api.github.com/repos/jvedsaqib/bangla_news_classifier",
+              {
+                headers: { Accept: "application/vnd.github+json" },
+              }
+            );
+            if (!res.ok)
+              throw new Error("GitHub API rate-limited or repo not found");
+            const repo = await res.json();
+
+            // Stars & forks
+            el("repo-stars").textContent = `${
+              repo.stargazers_count ?? 0
+            } stars`;
+            el("repo-forks").textContent = `${repo.forks_count ?? 0} forks`;
+
+            // License
+            el("repo-license").textContent =
+              repo.license?.spdx_id || "No license";
+
+            // Updated
+            const updated = new Date(repo.updated_at);
+            el(
+              "repo-updated"
+            ).textContent = `Updated ${updated.toLocaleDateString()}`;
+
+            // Description (fallback to existing if null)
+            if (repo.description) {
+              el("repo-desc").textContent = repo.description;
+            }
+
+            // Topics (needs a separate endpoint in some cases; repo has topics field too)
+            const topics = repo.topics || [];
+            topicsWrap.innerHTML = "";
+            topics.slice(0, 8).forEach((t) => {
+              const chip = document.createElement("span");
+              chip.className =
+                "text-xs px-2 py-1 rounded-full border border-sky-500/30 text-sky-400/90 bg-sky-500/10";
+              chip.textContent = t;
+              topicsWrap.appendChild(chip);
+            });
+            if (topics.length === 0) {
+              // Optional default chips
+              ["nlp", "bangla", "classification", "tf-idf", "lstm"].forEach(
+                (t) => {
+                  const chip = document.createElement("span");
+                  chip.className =
+                    "text-xs px-2 py-1 rounded-full border border-sky-500/30 text-sky-400/90 bg-sky-500/10";
+                  chip.textContent = t;
+                  topicsWrap.appendChild(chip);
+                }
+              );
+            }
+          } catch (e) {
+            // Graceful fallback
+            el("repo-stars").textContent = "—";
+            el("repo-forks").textContent = "—";
+            el("repo-license").textContent = "—";
+            el("repo-updated").textContent = "—";
+            topicsWrap.innerHTML = `
+        <span class="text-xs px-2 py-1 rounded-full border border-sky-500/30 text-sky-400/90 bg-sky-500/10">nlp</span>
+        <span class="text-xs px-2 py-1 rounded-full border border-sky-500/30 text-sky-400/90 bg-sky-500/10">bangla</span>
+        <span class="text-xs px-2 py-1 rounded-full border border-sky-500/30 text-sky-400/90 bg-sky-500/10">classification</span>
+      `;
+            // console.warn(e);
+          }
+        })();
+      </script>
     </section>
 
     <!-- Footer -->
