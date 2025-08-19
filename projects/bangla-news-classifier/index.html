@@ -1,0 +1,933 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Bangla News Article Classification</title>
+    <meta
+      name="description"
+      content="Machine Learning based system for classifying Bengali news articles into categories like Politics, Sports, Science, and more."
+    />
+    <meta property="og:title" content="Bangla News Article Classification" />
+    <meta
+      property="og:description"
+      content="ML & NLP project for classifying Bengali news into multiple categories."
+    />
+    <meta property="og:type" content="website" />
+    <meta name="theme-color" content="#0ea5e9" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      html {
+        scroll-behavior: smooth;
+      }
+      .card {
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+      }
+      .card:hover {
+        transform: translateY(-4px);
+      }
+      .tag {
+        border: 1px solid rgb(99 102 241 / 0.25);
+      }
+    </style>
+  </head>
+  <body
+    class="bg-gradient-to-b from-slate-50 to-white dark:from-slate-950 dark:to-slate-900 text-slate-800 dark:text-slate-100"
+  >
+    <!-- Header -->
+    <header
+      class="sticky top-0 z-50 bg-white/70 dark:bg-slate-900/70 backdrop-blur border-b border-slate-200 dark:border-slate-800"
+    >
+      <div
+        class="max-w-6xl mx-auto flex items-center justify-between px-6 py-3"
+      >
+        <a href="../.." class="font-extrabold text-xl"
+          >SJ<span class="text-sky-500">.</span></a
+        >
+        <nav class="hidden sm:flex gap-6 text-sm">
+          <a href="#introduction" class="hover:text-sky-500">Introduction</a>
+          <a href="#data" class="hover:text-sky-500">Data</a>
+          <a href="#features" class="hover:text-sky-500">Features</a>
+          <a href="#classifiers" class="hover:text-sky-500">Classifiers</a>
+          <a href="#metrics" class="hover:text-sky-500">Metrics</a>
+          <a href="#future" class="hover:text-sky-500">Future</a>
+        </nav>
+      </div>
+    </header>
+
+    <!-- Hero -->
+    <section id="home" class="py-20 text-center">
+      <div class="max-w-3xl mx-auto px-6">
+        <h1 class="text-4xl sm:text-5xl font-extrabold tracking-tight">
+          Bangla News <span class="text-sky-500">Article Classification</span>
+        </h1>
+        <p class="mt-4 text-lg text-slate-600 dark:text-slate-300">
+          A Machine Learning project to classify Bengali news into categories
+          like National, Science, Education, Sports, Politics, International,
+          and more.
+        </p>
+      </div>
+    </section>
+
+    <!-- Sections -->
+    <section
+      id="introduction"
+      class="py-16 bg-slate-50/60 dark:bg-slate-800/40"
+    >
+      <div class="max-w-6xl mx-auto px-6">
+        <h2 class="text-3xl font-bold">Introduction</h2>
+        <p class="mt-4 text-slate-700 dark:text-slate-300">
+          The rapid growth of digital media has created a huge volume of Bengali
+          news articles. Efficient classification helps improve information
+          retrieval, content analysis, and recommendations.
+        </p>
+      </div>
+    </section>
+
+    <section id="data" class="py-16">
+      <div class="max-w-6xl mx-auto px-6">
+        <h2 class="text-3xl font-bold">Data Collection & Preprocessing</h2>
+        <ul
+          class="mt-4 list-disc list-inside space-y-2 text-slate-700 dark:text-slate-300"
+        >
+          <li>
+            <b>Shironaam Dataset (Hugging Face):</b> Bengali news headlines
+          </li>
+          <li>
+            <b>Bengali News Articles (Kaggle):</b> Rich collection from
+            newspapers
+          </li>
+          <li>
+            <b>Potrika Bangla Newspaper (Kaggle):</b> In-depth diverse reporting
+          </li>
+        </ul>
+        <p class="mt-4">
+          Preprocessing steps included cleaning, merging, and balancing
+          datasets.
+        </p>
+      </div>
+    </section>
+
+    <section id="features" class="py-16 bg-slate-50/60 dark:bg-slate-800/40">
+      <div class="max-w-6xl mx-auto px-6">
+        <h2 class="text-3xl font-bold">Features</h2>
+        <div class="mt-6 grid md:grid-cols-2 gap-6">
+          <div
+            class="card p-6 rounded-3xl border bg-white/70 dark:bg-slate-900/60"
+          >
+            <h3 class="font-semibold">Traditional Features</h3>
+            <ul class="mt-2 list-disc list-inside text-sm">
+              <li>TF</li>
+              <li>IDF</li>
+              <li>TF-IDF</li>
+            </ul>
+          </div>
+          <div
+            class="card p-6 rounded-3xl border bg-white/70 dark:bg-slate-900/60"
+          >
+            <h3 class="font-semibold">Deep Learning Features</h3>
+            <ul class="mt-2 list-disc list-inside text-sm">
+              <li>Tokenizer</li>
+              <li>Padding Sequences</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="classifiers" class="py-16">
+      <div class="max-w-6xl mx-auto px-6">
+        <h2 class="text-3xl font-bold">Classifiers</h2>
+        <p class="mt-4">
+          The dataset was split (50% train, 25% validation, 25% test). Models
+          used:
+        </p>
+
+        <!-- Carousel Container -->
+        <div class="relative w-full max-w-3xl mx-auto mt-10 overflow-hidden">
+          <!-- Track -->
+          <div
+            id="carousel-track"
+            class="flex transition-transform duration-500"
+            style="transform: translateX(0)"
+          >
+            <!-- Item 1: Logistic Regression -->
+            <div
+              class="w-full shrink-0 p-6 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 rounded-2xl shadow-xl text-gray-100 border border-slate-700 relative overflow-hidden"
+            >
+              <div
+                class="absolute inset-0 bg-gradient-to-tr from-sky-500/10 via-purple-500/10 to-transparent blur-2xl"
+              ></div>
+              <div class="relative z-10 p-6">
+                <h3
+                  class="text-xl font-bold mb-2 text-transparent bg-clip-text bg-gradient-to-r from-sky-400 to-purple-400"
+                >
+                  Logistic Regression
+                </h3>
+                <p class="text-sm mb-3 text-slate-300">
+                  Predicts probability of news category. Works well with TF-IDF
+                  features for classification.
+                </p>
+                <!-- Code Block -->
+                <pre
+                  class="bg-gray-950/70 border border-gray-700 text-sky-300 text-xs rounded-lg p-3 overflow-x-auto mb-4 shadow-inner"
+                >
+from sklearn.linear_model import LogisticRegression
+from sklearn.multiclass import OneVsRestClassifier
+
+logistic_model = OneVsRestClassifier(
+    LogisticRegression(max_iter=1000, solver="lbfgs")
+)
+    </pre
+                >
+
+                <!-- Results Table -->
+                <div class="overflow-x-auto mb-4">
+                  <table
+                    class="w-full text-xs border border-gray-700 rounded-lg"
+                  >
+                    <thead
+                      class="bg-gray-800/60 text-cyan-300 uppercase tracking-wider"
+                    >
+                      <tr>
+                        <th class="px-2 py-1 text-left">Category</th>
+                        <th class="px-2 py-1">Precision</th>
+                        <th class="px-2 py-1">Recall</th>
+                        <th class="px-2 py-1">F1</th>
+                        <th class="px-2 py-1">Support</th>
+                      </tr>
+                    </thead>
+                    <tbody class="text-gray-200">
+                      <tr class="border-t border-gray-700">
+                        <td class="py-1">Education</td>
+                        <td>0.93</td>
+                        <td>0.94</td>
+                        <td>0.94</td>
+                        <td>3750</td>
+                      </tr>
+                      <tr class="border-t border-gray-700">
+                        <td>International</td>
+                        <td>0.87</td>
+                        <td>0.91</td>
+                        <td>0.89</td>
+                        <td>3750</td>
+                      </tr>
+                      <tr class="border-t border-gray-700">
+                        <td>Kolkata</td>
+                        <td>0.82</td>
+                        <td>0.84</td>
+                        <td>0.83</td>
+                        <td>1157</td>
+                      </tr>
+                      <tr class="border-t border-gray-700">
+                        <td>National</td>
+                        <td>0.81</td>
+                        <td>0.76</td>
+                        <td>0.79</td>
+                        <td>3750</td>
+                      </tr>
+                      <tr class="border-t border-gray-700">
+                        <td>Politics</td>
+                        <td>0.84</td>
+                        <td>0.85</td>
+                        <td>0.85</td>
+                        <td>3754</td>
+                      </tr>
+                      <tr class="border-t border-gray-700">
+                        <td>Science</td>
+                        <td>0.95</td>
+                        <td>0.92</td>
+                        <td>0.93</td>
+                        <td>3750</td>
+                      </tr>
+                      <tr class="border-t border-gray-700">
+                        <td>Sports</td>
+                        <td>0.96</td>
+                        <td>0.97</td>
+                        <td>0.96</td>
+                        <td>7500</td>
+                      </tr>
+                      <tr class="border-t border-gray-700">
+                        <td>State</td>
+                        <td>0.82</td>
+                        <td>0.49</td>
+                        <td>0.62</td>
+                        <td>550</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+
+                <!-- Key Observations -->
+                <h3 class="text-sm font-semibold mb-2 text-purple-300">
+                  Key Observations
+                </h3>
+                <ul
+                  class="list-disc list-inside text-sm space-y-1 text-gray-300"
+                >
+                  <li>
+                    <span class="text-cyan-400 font-semibold"
+                      >High Performance</span
+                    >: Education, Science, Sports (F1 up to 0.96).
+                  </li>
+                  <li>
+                    <span class="text-yellow-400 font-semibold">Moderate</span>:
+                    Kolkata & Politics show overlapping content challenges.
+                  </li>
+                  <li>
+                    <span class="text-red-400 font-semibold">Low</span>: State
+                    struggles with imbalanced data (F1 = 0.62).
+                  </li>
+                </ul>
+
+                <!-- accuracy badge -->
+                <span
+                  class="px-3 py-1 rounded-full text-xs font-semibold bg-gradient-to-r from-green-500 to-emerald-400 text-black shadow"
+                  >Accuracy: 90%</span
+                >
+              </div>
+            </div>
+
+            <!-- Item 2: Random Forest -->
+            <div
+              class="w-full shrink-0 p-6 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 rounded-2xl shadow-xl text-gray-100 border border-slate-700 relative overflow-hidden"
+            >
+              <div
+                class="absolute inset-0 bg-gradient-to-tr from-green-400/10 via-teal-400/10 to-transparent blur-2xl"
+              ></div>
+              <div class="relative z-10 p-6">
+                <h3
+                  class="text-xl font-bold mb-2 text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-teal-300"
+                >
+                  Random Forest
+                </h3>
+                <p class="text-sm mb-3 text-slate-300">
+                  Ensemble of decision trees. Robust against overfitting, works
+                  well with high-dimensional text data.
+                </p>
+                <!-- Code Block -->
+                <pre
+                  class="bg-gray-950/70 border border-gray-700 text-green-300 text-xs rounded-lg p-3 overflow-x-auto mb-4 shadow-inner"
+                >
+from sklearn.ensemble import RandomForestClassifier
+
+rf_model = RandomForestClassifier(n_estimation=100, random_state=35)
+    </pre
+                >
+
+                <!-- Results Table -->
+                <div class="overflow-x-auto mb-4">
+                  <table
+                    class="w-full text-xs border border-gray-700 rounded-lg"
+                  >
+                    <thead
+                      class="bg-gray-800/60 text-cyan-300 uppercase tracking-wider"
+                    >
+                      <tr>
+                        <th class="px-2 py-1 text-left">Category</th>
+                        <th class="px-2 py-1">Precision</th>
+                        <th class="px-2 py-1">Recall</th>
+                        <th class="px-2 py-1">F1</th>
+                        <th class="px-2 py-1">Support</th>
+                      </tr>
+                    </thead>
+                    <tbody class="text-gray-200">
+                      <tr class="border-t border-gray-700">
+                        <td class="py-1">Education</td>
+                        <td>0.91</td>
+                        <td>0.92</td>
+                        <td>0.92</td>
+                        <td>3750</td>
+                      </tr>
+                      <tr class="border-t border-gray-700">
+                        <td>International</td>
+                        <td>0.77</td>
+                        <td>0.88</td>
+                        <td>0.82</td>
+                        <td>3750</td>
+                      </tr>
+                      <tr class="border-t border-gray-700">
+                        <td>Kolkata</td>
+                        <td>0.84</td>
+                        <td>0.49</td>
+                        <td>0.62</td>
+                        <td>1157</td>
+                      </tr>
+                      <tr class="border-t border-gray-700">
+                        <td>National</td>
+                        <td>0.82</td>
+                        <td>0.67</td>
+                        <td>0.74</td>
+                        <td>3750</td>
+                      </tr>
+                      <tr class="border-t border-gray-700">
+                        <td>Politics</td>
+                        <td>0.81</td>
+                        <td>0.86</td>
+                        <td>0.83</td>
+                        <td>3754</td>
+                      </tr>
+                      <tr class="border-t border-gray-700">
+                        <td>Science</td>
+                        <td>0.91</td>
+                        <td>0.91</td>
+                        <td>0.91</td>
+                        <td>3750</td>
+                      </tr>
+                      <tr class="border-t border-gray-700">
+                        <td>Sports</td>
+                        <td>0.88</td>
+                        <td>0.98</td>
+                        <td>0.93</td>
+                        <td>7500</td>
+                      </tr>
+                      <tr class="border-t border-gray-700">
+                        <td>State</td>
+                        <td>0.98</td>
+                        <td>0.08</td>
+                        <td>0.15</td>
+                        <td>550</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+
+                <!-- Key Observations -->
+                <h3 class="text-sm font-semibold mb-2 text-purple-300">
+                  Key Observations
+                </h3>
+                <ul
+                  class="list-disc list-inside text-sm space-y-1 text-gray-300"
+                >
+                  <li>
+                    <span class="text-cyan-400 font-semibold"
+                      >High Performance</span
+                    >: Education, Science, Sports (F1 up to 0.93).
+                  </li>
+                  <li>
+                    <span class="text-yellow-400 font-semibold">Moderate</span>:
+                    International & Politics show overlapping content
+                    challenges.
+                  </li>
+                  <li>
+                    <span class="text-red-400 font-semibold">Low</span>: State
+                    struggles with imbalanced data (F1 = 0.15).
+                  </li>
+                </ul>
+
+                <!-- accuracy badge -->
+                <span
+                  class="px-3 py-1 rounded-full text-xs font-semibold bg-gradient-to-r from-yellow-400 to-orange-400 text-black shadow"
+                  >Accuracy: 88%</span
+                >
+              </div>
+            </div>
+
+            <!-- Item 3: Naïve Bayes -->
+            <div
+              class="w-full shrink-0 p-6 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 rounded-2xl shadow-xl text-gray-100 border border-slate-700 relative overflow-hidden"
+            >
+              <div
+                class="absolute inset-0 bg-gradient-to-tr from-pink-500/10 via-rose-400/10 to-transparent blur-2xl"
+              ></div>
+              <div class="relative z-10 p-6">
+                <h3
+                  class="text-xl font-bold mb-2 text-transparent bg-clip-text bg-gradient-to-r from-pink-400 to-rose-300"
+                >
+                  Naïve Bayes
+                </h3>
+                <p class="text-sm mb-3 text-slate-300">
+                  Probabilistic classifier assuming feature independence.
+                  Lightweight and efficient for text classification tasks like
+                  Bengali news categorization.
+                </p>
+
+                <!-- Code Block -->
+                <pre
+                  class="bg-gray-950/70 border border-gray-700 text-pink-300 text-xs rounded-lg p-3 overflow-x-auto mb-4 shadow-inner"
+                >
+from sklearn.naive_bayes import MultinomialNB
+
+nb_model = MultinomialNB()
+    </pre
+                >
+
+                <!-- Results Table -->
+                <div class="overflow-x-auto mb-4">
+                  <table
+                    class="w-full text-xs border border-gray-700 rounded-lg"
+                  >
+                    <thead
+                      class="bg-gray-800/60 text-pink-300 uppercase tracking-wider"
+                    >
+                      <tr>
+                        <th class="px-2 py-1 text-left">Category</th>
+                        <th class="px-2 py-1">Precision</th>
+                        <th class="px-2 py-1">Recall</th>
+                        <th class="px-2 py-1">F1</th>
+                      </tr>
+                    </thead>
+                    <tbody class="text-gray-200">
+                      <tr class="border-t border-gray-700">
+                        <td>Education</td>
+                        <td>0.93</td>
+                        <td>0.87</td>
+                        <td>0.90</td>
+                      </tr>
+                      <tr class="border-t border-gray-700">
+                        <td>International</td>
+                        <td>0.80</td>
+                        <td>0.90</td>
+                        <td>0.85</td>
+                      </tr>
+                      <tr class="border-t border-gray-700">
+                        <td>Kolkata</td>
+                        <td>0.71</td>
+                        <td>0.68</td>
+                        <td>0.69</td>
+                      </tr>
+                      <tr class="border-t border-gray-700">
+                        <td>National</td>
+                        <td>0.75</td>
+                        <td>0.71</td>
+                        <td>0.73</td>
+                      </tr>
+                      <tr class="border-t border-gray-700">
+                        <td>Politics</td>
+                        <td>0.77</td>
+                        <td>0.85</td>
+                        <td>0.81</td>
+                      </tr>
+                      <tr class="border-t border-gray-700">
+                        <td>Science</td>
+                        <td>0.93</td>
+                        <td>0.90</td>
+                        <td>0.92</td>
+                      </tr>
+                      <tr class="border-t border-gray-700">
+                        <td>Sports</td>
+                        <td>0.92</td>
+                        <td>0.96</td>
+                        <td>0.94</td>
+                      </tr>
+                      <tr class="border-t border-gray-700">
+                        <td>State</td>
+                        <td>1.00</td>
+                        <td>0.01</td>
+                        <td>0.01</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+
+                <!-- Key Observations -->
+                <h3 class="text-sm font-semibold mb-2 text-rose-300">
+                  Key Observations
+                </h3>
+                <ul
+                  class="list-disc list-inside text-sm space-y-1 text-gray-300"
+                >
+                  <li>
+                    <span class="text-green-400 font-semibold">Strong</span>:
+                    Sports (F1=0.94), Science (0.92), Education (0.90).
+                  </li>
+                  <li>
+                    <span class="text-yellow-400 font-semibold">Moderate</span>:
+                    International & Politics handled reasonably well.
+                  </li>
+                  <li>
+                    <span class="text-red-400 font-semibold">Weak</span>: State
+                    class struggles heavily (F1 = 0.01).
+                  </li>
+                </ul>
+
+                <!-- accuracy badge -->
+                <span
+                  class="px-3 py-1 mt-3 inline-block rounded-full text-xs font-semibold bg-gradient-to-r from-indigo-400 to-blue-400 text-black shadow"
+                  >Accuracy: 85%</span
+                >
+              </div>
+            </div>
+
+            <!-- Item 4: Support Vector Machine -->
+            <div
+              class="w-full shrink-0 p-6 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 rounded-2xl shadow-xl text-gray-100 border border-slate-700 relative overflow-hidden"
+            >
+              <div
+                class="absolute inset-0 bg-gradient-to-tr from-purple-500/10 via-indigo-500/10 to-transparent blur-2xl"
+              ></div>
+              <div class="relative z-10 p-6">
+                <h3
+                  class="text-xl font-bold mb-2 text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-indigo-400"
+                >
+                  Support Vector Machine
+                </h3>
+                <p class="text-sm mb-3 text-slate-300">
+                  Maximizes margins for classification. Performs strongly with
+                  high-dimensional text data like TF-IDF.
+                </p>
+
+                <!-- Code Block -->
+                <pre
+                  class="bg-gray-950/70 border border-gray-700 text-purple-300 text-xs rounded-lg p-3 overflow-x-auto mb-4 shadow-inner"
+                >
+from sklearn.svm import SVC
+
+svm_model = SVC(kernel="linear", C=1.0)
+    </pre
+                >
+
+                <!-- Results Table -->
+                <div class="overflow-x-auto mb-4">
+                  <table
+                    class="w-full text-xs border border-gray-700 rounded-lg"
+                  >
+                    <thead
+                      class="bg-gray-800/60 text-indigo-300 uppercase tracking-wider"
+                    >
+                      <tr>
+                        <th class="px-2 py-1 text-left">Category</th>
+                        <th class="px-2 py-1">Precision</th>
+                        <th class="px-2 py-1">Recall</th>
+                        <th class="px-2 py-1">F1</th>
+                      </tr>
+                    </thead>
+                    <tbody class="text-gray-200">
+                      <tr class="border-t border-gray-700">
+                        <td>Education</td>
+                        <td>0.95</td>
+                        <td>0.94</td>
+                        <td>0.94</td>
+                      </tr>
+                      <tr class="border-t border-gray-700">
+                        <td>International</td>
+                        <td>0.88</td>
+                        <td>0.94</td>
+                        <td>0.91</td>
+                      </tr>
+                      <tr class="border-t border-gray-700">
+                        <td>Kolkata</td>
+                        <td>0.84</td>
+                        <td>0.87</td>
+                        <td>0.85</td>
+                      </tr>
+                      <tr class="border-t border-gray-700">
+                        <td>National</td>
+                        <td>0.82</td>
+                        <td>0.76</td>
+                        <td>0.79</td>
+                      </tr>
+                      <tr class="border-t border-gray-700">
+                        <td>Politics</td>
+                        <td>0.83</td>
+                        <td>0.86</td>
+                        <td>0.85</td>
+                      </tr>
+                      <tr class="border-t border-gray-700">
+                        <td>Science</td>
+                        <td>0.94</td>
+                        <td>0.94</td>
+                        <td>0.94</td>
+                      </tr>
+                      <tr class="border-t border-gray-700">
+                        <td>Sports</td>
+                        <td>0.96</td>
+                        <td>0.95</td>
+                        <td>0.96</td>
+                      </tr>
+                      <tr class="border-t border-gray-700">
+                        <td>State</td>
+                        <td>0.77</td>
+                        <td>0.66</td>
+                        <td>0.71</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+
+                <!-- Key Observations -->
+                <h3 class="text-sm font-semibold mb-2 text-indigo-300">
+                  Key Observations
+                </h3>
+                <ul
+                  class="list-disc list-inside text-sm space-y-1 text-gray-300"
+                >
+                  <li>
+                    <span class="text-green-400 font-semibold">High</span>:
+                    Education, Science, Sports (F1 up to 0.96).
+                  </li>
+                  <li>
+                    <span class="text-yellow-400 font-semibold">Moderate</span>:
+                    International, Politics, Kolkata (~0.85 F1).
+                  </li>
+                  <li>
+                    <span class="text-red-400 font-semibold">Challenging</span>:
+                    State class underperforms (F1=0.71).
+                  </li>
+                </ul>
+
+                <!-- accuracy badge -->
+                <span
+                  class="px-3 py-1 mt-3 inline-block rounded-full text-xs font-semibold bg-gradient-to-r from-sky-400 to-cyan-400 text-black shadow"
+                  >Accuracy: 89%</span
+                >
+              </div>
+            </div>
+
+            <!-- Item 5: LSTM -->
+            <div
+              class="w-full shrink-0 p-6 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 rounded-2xl shadow-xl text-gray-100 border border-slate-700 relative overflow-hidden"
+            >
+              <div
+                class="absolute inset-0 bg-gradient-to-tr from-cyan-500/10 via-emerald-400/10 to-transparent blur-2xl"
+              ></div>
+              <div class="relative z-10 p-6">
+                <h3
+                  class="text-xl font-bold mb-2 text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-emerald-400"
+                >
+                  LSTM
+                </h3>
+                <p class="text-sm mb-3 text-slate-300">
+                  Deep learning model that captures sequence context. Achieved
+                  best performance among all classifiers.
+                </p>
+                <!-- Results Table -->
+                <div class="overflow-x-auto mb-4">
+                  <table
+                    class="w-full text-xs border border-gray-700 rounded-lg"
+                  >
+                    <thead
+                      class="bg-gray-800/60 text-indigo-300 uppercase tracking-wider"
+                    >
+                      <tr>
+                        <th class="px-2 py-1 text-left">Category</th>
+                        <th class="px-2 py-1">Precision</th>
+                        <th class="px-2 py-1">Recall</th>
+                        <th class="px-2 py-1">F1</th>
+                      </tr>
+                    </thead>
+                    <tbody class="text-gray-200">
+                      <tr class="border-t border-gray-700">
+                        <td>Education</td>
+                        <td>0.88</td>
+                        <td>0.87</td>
+                        <td>0.88</td>
+                      </tr>
+                      <tr class="border-t border-gray-700">
+                        <td>International</td>
+                        <td>0.92</td>
+                        <td>0.93</td>
+                        <td>0.93</td>
+                      </tr>
+                      <tr class="border-t border-gray-700">
+                        <td>Kolkata</td>
+                        <td>0.95</td>
+                        <td>0.97</td>
+                        <td>0.96</td>
+                      </tr>
+                      <tr class="border-t border-gray-700">
+                        <td>National</td>
+                        <td>0.92</td>
+                        <td>0.94</td>
+                        <td>0.93</td>
+                      </tr>
+                      <tr class="border-t border-gray-700">
+                        <td>Politics</td>
+                        <td>0.89</td>
+                        <td>0.94</td>
+                        <td>0.91</td>
+                      </tr>
+                      <tr class="border-t border-gray-700">
+                        <td>Science</td>
+                        <td>0.92</td>
+                        <td>0.93</td>
+                        <td>0.93</td>
+                      </tr>
+                      <tr class="border-t border-gray-700">
+                        <td>Sports</td>
+                        <td>0.98</td>
+                        <td>0.98</td>
+                        <td>0.98</td>
+                      </tr>
+                      <tr class="border-t border-gray-700">
+                        <td>State</td>
+                        <td>0.84</td>
+                        <td>0.76</td>
+                        <td>0.80</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+
+                <!-- Key Observations -->
+                <h3 class="text-sm font-semibold mb-2 text-indigo-300">
+                  Key Observations
+                </h3>
+                <ul
+                  class="list-disc list-inside text-sm space-y-1 text-gray-300"
+                >
+                  <li>
+                    <span class="text-green-400 font-semibold">High</span>:
+                    Education, Science, Sports (F1 up to 0.96).
+                  </li>
+                  <li>
+                    <span class="text-yellow-400 font-semibold">Moderate</span>:
+                    International, Politics, Kolkata (~0.85 F1).
+                  </li>
+                  <li>
+                    <span class="text-red-400 font-semibold">Challenging</span>:
+                    State class underperforms (F1=0.71).
+                  </li>
+                </ul>
+
+                <!-- accuracy badge -->
+                <span
+                  class="px-3 py-1 rounded-full text-xs font-semibold bg-gradient-to-r from-green-400 to-emerald-400 text-black shadow"
+                  >Accuracy: 91%</span
+                >
+              </div>
+            </div>
+          </div>
+
+          <!-- Controls -->
+          <button
+            id="carousel-prev"
+            class="absolute left-2 top-1/2 -translate-y-1/2 bg-white/80 dark:bg-slate-700/80 rounded-full shadow p-2 hover:bg-slate-200 dark:hover:bg-slate-600"
+          >
+            ←
+          </button>
+          <button
+            id="carousel-next"
+            class="absolute right-2 top-1/2 -translate-y-1/2 bg-white/80 dark:bg-slate-700/80 rounded-full shadow p-2 hover:bg-slate-200 dark:hover:bg-slate-600"
+          >
+            →
+          </button>
+        </div>
+
+        <!-- Dots -->
+        <div
+          id="carousel-dots"
+          class="flex justify-center mt-6 space-x-2"
+        ></div>
+      </div>
+
+      <script>
+        const track = document.getElementById("carousel-track");
+        const slides = track.children.length;
+        const dotsContainer = document.getElementById("carousel-dots");
+        let index = 0;
+
+        // Create dots dynamically
+        for (let i = 0; i < slides; i++) {
+          const dot = document.createElement("button");
+          dot.className = "w-3 h-3 rounded-full bg-slate-400 dark:bg-slate-600";
+          dot.addEventListener("click", () => {
+            index = i;
+            updateCarousel();
+          });
+          dotsContainer.appendChild(dot);
+        }
+        const dots = dotsContainer.children;
+
+        function updateCarousel() {
+          track.style.transform = `translateX(-${index * 100}%)`;
+          for (let i = 0; i < dots.length; i++) {
+            dots[i].className =
+              "w-3 h-3 rounded-full " +
+              (i === index ? "bg-sky-500" : "bg-slate-400 dark:bg-slate-600");
+          }
+        }
+
+        document
+          .getElementById("carousel-prev")
+          .addEventListener("click", () => {
+            index = (index - 1 + slides) % slides;
+            updateCarousel();
+          });
+        document
+          .getElementById("carousel-next")
+          .addEventListener("click", () => {
+            index = (index + 1) % slides;
+            updateCarousel();
+          });
+
+        // Initialize
+        updateCarousel();
+      </script>
+    </section>
+
+    <section id="metrics" class="py-16 bg-slate-50/60 dark:bg-slate-800/40">
+      <div class="max-w-6xl mx-auto px-6">
+        <h2 class="text-3xl font-bold">Performance Metrics</h2>
+        <p class="mt-4">
+          Models evaluated using Accuracy, Precision, Recall, F1-score. The LSTM
+          achieved <b>91% accuracy</b>, highest among all models.
+        </p>
+      </div>
+    </section>
+
+    <section id="future" class="py-16">
+      <div class="max-w-6xl mx-auto px-6">
+        <h2 class="text-3xl font-bold">Future Scope</h2>
+        <ul class="mt-4 list-disc list-inside space-y-2">
+          <li>Handling class imbalance with SMOTE</li>
+          <li>Using pre-trained models like BanglaBERT</li>
+          <li>Building real-time classification system</li>
+          <li>Multi-label classification</li>
+          <li>Integrating sentiment analysis</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="references" class="py-16 bg-slate-50/60 dark:bg-slate-800/40">
+      <div class="max-w-6xl mx-auto px-6">
+        <h2 class="text-3xl font-bold">References</h2>
+        <ul class="mt-4 space-y-2 text-sm list-disc list-inside">
+          <li>
+            <a
+              href="https://huggingface.co/datasets/dialect-ai/shironaam"
+              target="_blank"
+              class="text-sky-500"
+              >Shironaam Dataset</a
+            >
+          </li>
+          <li>
+            <a
+              href="https://www.kaggle.com/datasets/csoham/classification-bengali-news-articles-indicnlp"
+              target="_blank"
+              class="text-sky-500"
+              >Bengali News Articles Dataset</a
+            >
+          </li>
+          <li>
+            <a
+              href="https://www.kaggle.com/datasets/sabbirhossainujjal/potrika-bangla-newspaper-datasets"
+              target="_blank"
+              class="text-sky-500"
+              >Potrika Dataset</a
+            >
+          </li>
+          <li>
+            <a
+              href="https://github.com/stopwords-iso/stopwords-bn"
+              target="_blank"
+              class="text-sky-500"
+              >Stopwords BN</a
+            >
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-10 text-center text-sm text-slate-500">
+      <p>
+        © <span id="year"></span> Saqib Javed | Built with ❤️ on Github Pages
+      </p>
+    </footer>
+
+    <script>
+      document.getElementById("year").textContent = new Date().getFullYear();
+    </script>
+  </body>
+</html>
