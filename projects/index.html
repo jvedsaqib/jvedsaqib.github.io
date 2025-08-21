@@ -1,505 +1,370 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>jvedsaqib-projects</title>
-    <meta
-      name="description"
-      content="Saqib Javed — MCA student and developer. Projects in ML, Android, and data. Java, Python, Firebase."
-    />
-    <meta property="og:title" content="Saqib Javed — Portfolio" />
-    <meta
-      property="og:description"
-      content="Projects in ML, Android, and data. Java, Python, Firebase."
-    />
-    <meta property="og:type" content="website" />
-    <meta name="theme-color" content="#0ea5e9" />
-    <link
-      rel="apple-touch-icon"
-      sizes="180x180"
-      href="../assets/images/favicon/apple-touch-icon.png"
-    />
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="32x32"
-      href="../assets/images/favicon/favicon-32x32.png"
-    />
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="16x16"
-      href="../assets/images/favicon/favicon-16x16.png"
-    />
-    <link rel="manifest" href="../assets/images/favicon/site.webmanifest" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
-      rel="stylesheet"
-    />
 
-    <script src="https://cdn.tailwindcss.com"></script>
-    <style>
-      :root {
-        color-scheme: light dark;
-      }
-      html {
-        scroll-behavior: smooth;
-      }
-      body {
-        font-family: "Inter", system-ui, -apple-system, Segoe UI, Roboto,
-          "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji",
-          "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
-      }
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>jvedsaqib-projects</title>
+  <meta name="description"
+    content="Saqib Javed — MCA student and developer. Projects in ML, Android, and data. Java, Python, Firebase." />
+  <meta property="og:title" content="Saqib Javed — Portfolio" />
+  <meta property="og:description" content="Projects in ML, Android, and data. Java, Python, Firebase." />
+  <meta property="og:type" content="website" />
+  <meta name="theme-color" content="#0ea5e9" />
+  <link rel="apple-touch-icon" sizes="180x180" href="../assets/images/favicon/apple-touch-icon.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="../assets/images/favicon/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="../assets/images/favicon/favicon-16x16.png" />
+  <link rel="manifest" href="../assets/images/favicon/site.webmanifest" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+    rel="stylesheet" />
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    :root {
+      color-scheme: light dark;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: "Inter", system-ui, -apple-system, Segoe UI, Roboto,
+        "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji",
+        "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
+    }
+
+    .glass {
+      backdrop-filter: saturate(150%) blur(10px);
+      background: color-mix(in hsl, hsl(200 90% 55%) 12%, transparent);
+    }
+
+    .card {
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+    }
+
+    .tag {
+      border: 1px solid rgb(99 102 241 / 0.25);
+    }
+
+    .fade {
+      opacity: 0;
+      transform: scale(0.98);
+      transition: opacity 0.3s ease, transform 0.3s ease;
+    }
+
+    .fade.show {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    @media (prefers-color-scheme: dark) {
       .glass {
-        backdrop-filter: saturate(150%) blur(10px);
-        background: color-mix(in hsl, hsl(200 90% 55%) 12%, transparent);
+        background: color-mix(in hsl, hsl(200 90% 55%) 18%, transparent);
       }
-      .card {
-        transition: transform 0.2s ease, box-shadow 0.2s ease;
-      }
-      .card:hover {
-        transform: translateY(-4px);
-      }
+
       .tag {
-        border: 1px solid rgb(99 102 241 / 0.25);
+        border-color: rgb(99 102 241 / 0.35);
       }
-      @media (prefers-color-scheme: dark) {
-        .glass {
-          background: color-mix(in hsl, hsl(200 90% 55%) 18%, transparent);
-        }
-        .tag {
-          border-color: rgb(99 102 241 / 0.35);
-        }
-      }
-    </style>
-  </head>
-  <body
-    class="bg-gradient-to-b from-slate-50 to-white dark:from-slate-950 dark:to-slate-900 text-slate-800 dark:text-slate-100"
-  >
-    <header class="sticky top-0 z-50 glass">
-      <div
-        class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 py-3 flex items-center justify-between"
-      >
-        <a href="../" class="font-extrabold tracking-tight text-xl"
-          >SJ<span class="text-sky-500">.</span></a
-        >
-        <h3>jvedsaqib - PROJECTS</h3>
-        <nav class="hidden sm:flex items-center gap-6 text-sm">
-          <a class="hover:text-sky-500" href="../">Portfolio</a>
-          <a
-            class="inline-flex items-center gap-2 px-3 py-1.5 rounded-xl border border-sky-400/50 hover:bg-sky-500/10"
-            href="assets/cv/SAQIB-JAVED-CV.pdf"
-            download
-          >
-            <span>Download CV</span>
-          </a>
-        </nav>
-      </div>
-    </header>
+    }
+  </style>
+</head>
 
-    <!-- hero -->
-    <section id="home" class="relative overflow-hidden">
-      <div
-        class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 pt-16 pb-10 sm:pt-24 sm:pb-16 text-center"
-      >
-        <h1 class="mt-4 text-4xl sm:text-5xl font-extrabold tracking-tight">
-          Welcome <span>to</span>
-          <span
-            class="bg-clip-text text-transparent bg-gradient-to-r from-indigo-500 to-indigo-900"
-          >
-            my projects section
-          </span>
-        </h1>
+<body
+  class="bg-gradient-to-b from-slate-50 to-white dark:from-slate-950 dark:to-slate-900 text-slate-800 dark:text-slate-100">
+  <header class="sticky top-0 z-50 glass">
+    <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 py-3 flex items-center justify-between">
+      <a href="../" class="font-extrabold tracking-tight text-xl">SJ<span class="text-sky-500">.</span></a>
+      <h3>jvedsaqib - PROJECTS</h3>
+      <nav class="hidden sm:flex items-center gap-6 text-sm">
+        <a class="hover:text-sky-500" href="../">Portfolio</a>
+        <a class="inline-flex items-center gap-2 px-3 py-1.5 rounded-xl border border-sky-400/50 hover:bg-sky-500/10"
+          href="assets/cv/SAQIB-JAVED-CV.pdf" download>
+          <span>Download CV</span>
+        </a>
+      </nav>
+    </div>
+  </header>
 
-        <!-- Buttons Row -->
-      <div class="mt-10 flex flex-wrap justify-center gap-4">
-        <button
-          data-filter="all"
-          class="filter-btn px-6 py-2 rounded-full font-medium shadow-lg text-white 
+  <section class="flex justify-center text-sm mt-2">
+    <nav class="flex space-x-1 text-gray-400">
+      <a href="/" class="text-sky-600 hover:underline flex items-center">
+        🏠 Home
+      </a>
+      <span>/</span>
+      <span class="font-semibold text-gray-200">Projects</span>
+      <span>/</span>
+    </nav>
+  </section>
+
+  <!-- hero -->
+  <section id="home" class="relative overflow-hidden">
+    <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 pt-16 pb-10 sm:pt-24 sm:pb-16 text-center">
+      <h1 class="mt-4 text-4xl sm:text-5xl font-extrabold tracking-tight">
+        Welcome <span>to</span>
+        <span class="bg-clip-text text-transparent bg-gradient-to-r from-indigo-500 to-indigo-900">
+          my projects section
+        </span>
+      </h1>
+
+      <!-- Buttons Row -->
+      <div class="grid grid-flow-row">
+        <div class="mt-10 flex flex-wrap justify-center gap-4">
+          <button data-filter="all" class="filter-btn px-6 py-2 rounded-full font-medium shadow-lg text-white 
                 bg-gradient-to-r from-sky-400 to-blue-500 
                 hover:from-sky-500 hover:to-blue-600 
-                transition duration-300 relative overflow-hidden"
-        >
-          All
-        </button>
-        <button
-          data-filter="ml"
-          class="filter-btn px-6 py-2 rounded-full font-medium shadow-lg text-white 
+                transition duration-300 relative overflow-hidden">
+            All
+          </button>
+          <button data-filter="ml" class="filter-btn px-6 py-2 rounded-full font-medium shadow-lg text-white 
                 bg-gradient-to-r from-purple-400 to-fuchsia-500 
                 hover:from-purple-500 hover:to-fuchsia-600 
-                transition duration-300 relative overflow-hidden"
-        >
-          ML
-        </button>
-        <button
-          data-filter="php"
-          class="filter-btn px-6 py-2 rounded-full font-medium shadow-lg text-white 
+                transition duration-300 relative overflow-hidden">
+            ML
+          </button>
+          <button data-filter="php" class="filter-btn px-6 py-2 rounded-full font-medium shadow-lg text-white 
                 bg-gradient-to-r from-indigo-400 to-violet-500 
                 hover:from-indigo-500 hover:to-violet-600 
-                transition duration-300 relative overflow-hidden"
-        >
-          PHP
-        </button>
-        <button
-          data-filter="android"
-          class="filter-btn px-6 py-2 rounded-full font-medium shadow-lg text-white 
-                bg-gradient-to-r from-green-400 to-emerald-500 
+                transition duration-300 relative overflow-hidden">
+            PHP
+          </button>
+          <button data-filter="android" class="filter-btn px-6 py-2 rounded-full font-medium shadow-lg text-white 
+                bg-gradient-to-r from-gray-500 to-emerald-500 
                 hover:from-green-500 hover:to-emerald-600 
-                transition duration-300 relative overflow-hidden"
-        >
-          Android
-        </button>
-        <button
-          data-filter="flutter"
-          class="filter-btn px-6 py-2 rounded-full font-medium shadow-lg text-white 
+                transition duration-300 relative overflow-hidden">
+            Android
+          </button>
+          <button data-filter="flutter" class="filter-btn px-6 py-2 rounded-full font-medium shadow-lg text-white 
                 bg-gradient-to-r from-pink-400 to-rose-500 
                 hover:from-pink-500 hover:to-rose-600 
-                transition duration-300 relative overflow-hidden"
-        >
-          Flutter
-        </button>
-      </div>
-
-
-    </section>
-
-    <!-- ================== START PROJECTS SECTION ================== -->
-    <section id="projects" class="py-16 sm:py-20">
-      <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          <!-- ========== ML Projects ========== -->
-
-          <!-- start image-captioning -->
-          <article
-            data-category="ml"
-            class="card rounded-3xl p-6 border bg-gradient-to-b from-gray-500 to-indigo-900 shadow flex flex-col justify-between"
-          >
-            <div>
-              <h3 class="text-xl font-bold text-white">
-                Image Captioning using BLIP
-              </h3>
-              <p class="mt-2 text-sm text-slate-100">ML • LAVIS project</p>
-            </div>
-            <!-- Arrow Button -->
-            <div class="mt-4 flex justify-end">
-              <a
-                href="https://huggingface.co/spaces/jvedsaqib/Future_On"
-                target="_blank"
-                class="inline-flex items-center px-3 py-2 rounded-full bg-white text-sky-600 font-medium shadow hover:bg-slate-100 transition"
-              >
-                <span>View</span>
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  class="h-5 w-5 ml-2"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M9 5l7 7-7 7"
-                  />
-                </svg>
-              </a>
-            </div>
-          </article>
-          <!-- end image-captioning -->
-
-          <!-- start bangla-news-classifier -->
-          <article
-            data-category="ml"
-            class="card rounded-3xl p-6 border bg-gradient-to-b from-gray-500 to-indigo-900 shadow flex flex-col justify-between"
-          >
-            <div>
-              <h3 class="text-xl font-bold text-white">
-                Bangla News Classifier
-              </h3>
-              <p class="mt-2 text-sm text-slate-100">
-                ML • NLP project with Python & TensorFlow
-              </p>
-            </div>
-            <div class="mt-4 flex justify-end">
-              <a
-                href="bangla-news-classifier/"
-                class="inline-flex items-center px-3 py-2 rounded-full bg-white text-sky-600 font-medium shadow hover:bg-slate-100 transition"
-              >
-                <span>View</span>
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  class="h-5 w-5 ml-2"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M9 5l7 7-7 7"
-                  />
-                </svg>
-              </a>
-            </div>
-            <!-- Arrow Button -->
-            <div class="mt-4 flex justify-end">
-              <a
-                href="https://github.com/jvedsaqib/bangla_news_classifier"
-                target="_blank"
-                class="inline-flex items-center px-3 py-2 rounded-full bg-white text-sky-600 font-medium shadow hover:bg-slate-100 transition"
-              >
-                <span>Repo</span>
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  class="h-5 w-5 ml-2"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M9 5l7 7-7 7"
-                  />
-                </svg>
-              </a>
-            </div>
-          </article>
-          <!-- end bangla-news-classifier -->
-
-          <!-- start opinion-mining -->
-          <article
-            data-category="ml"
-            class="card rounded-3xl p-6 border bg-gradient-to-b from-gray-500 to-indigo-900 shadow flex flex-col justify-between"
-          >
-            <div>
-              <h3 class="text-xl font-bold text-white">Bengali Social Media Celebrity Opinions</h3>
-              <p class="mt-2 text-sm text-slate-100">
-                ML • Sentiment Analysis with Python & TensorFlow
-              </p>
-            </div>
-            <!-- Arrow Button -->
-            <div class="mt-4 flex justify-end">
-              <a
-                href="projects/opinion-mining.html"
-                class="inline-flex items-center px-3 py-2 rounded-full bg-white text-sky-600 font-medium shadow hover:bg-slate-100 transition"
-              >
-                <span>Uploading soon...</span>
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  class="h-5 w-5 ml-2"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M9 5l7 7-7 7"
-                  />
-                </svg>
-              </a>
-            </div>
-          </article>
-          <!-- end opinion-mining -->
-
-          <!-- ========== PHP Projects ========== -->
-
-          <!-- start placement-management-system -->
-          <article
-            data-category="php"
-            class="card rounded-3xl p-6 border bg-gradient-to-b from-gray-500 to-indigo-900 shadow flex flex-col justify-between"
-          >
-            <div>
-              <h3 class="text-xl font-bold text-white">
-                Placement Management System
-              </h3>
-              <p class="mt-2 text-sm text-slate-100">
-                PHP • MySQL • Database management
-              </p>
-            </div>
-            <!-- Arrow Button -->
-            <div class="mt-4 flex justify-end">
-              <a
-                href="https://github.com/jvedsaqib/miniproject"
-                class="inline-flex items-center px-3 py-2 rounded-full bg-white text-sky-600 font-medium shadow hover:bg-slate-100 transition"
-              >
-                <span>View</span>
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  class="h-5 w-5 ml-2"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M9 5l7 7-7 7"
-                  />
-                </svg>
-              </a>
-            </div>
-          </article>
-          <!-- end placement-management-system -->
-
-          <!-- start cafeteria-management-system -->
-          <article
-            data-category="php"
-            class="card rounded-3xl p-6 border bg-gradient-to-b from-gray-500 to-indigo-900 shadow flex flex-col justify-between"
-          >
-            <div>
-              <h3 class="text-xl font-bold text-white">
-                Cafeteria Management System
-              </h3>
-              <p class="mt-2 text-sm text-slate-100">
-                PHP • MySQL • Inventory & Billing
-              </p>
-            </div>
-            <!-- Arrow Button -->
-            <div class="mt-4 flex justify-end">
-              <a
-                href="https://github.com/jvedsaqib/cafe_management"
-                class="inline-flex items-center px-3 py-2 rounded-full bg-white text-sky-600 font-medium shadow hover:bg-slate-100 transition"
-              >
-                <span>View</span>
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  class="h-5 w-5 ml-2"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M9 5l7 7-7 7"
-                  />
-                </svg>
-              </a>
-            </div>
-          </article>
-          <!-- end cafeteria-management-system -->
-
-          <!-- ========== Android Projects ========== -->
-
-          <!-- start expense-tracker-app -->
-          <article
-            data-category="android"
-            class="card rounded-3xl p-6 border bg-gradient-to-b from-gray-500 to-indigo-900 shadow flex flex-col justify-between"
-          >
-            <div>
-              <h3 class="text-xl font-bold text-white">
-                BoiiMela: Used books selling and buying
-              </h3>
-              <p class="mt-2 text-sm text-slate-100">
-                Android • Java • Firebase
-              </p>
-            </div>
-            <!-- Arrow Button -->
-            <div class="mt-4 flex justify-end">
-              <a
-                href="https://github.com/jvedsaqib/BoiiMela"
-                target="_blank"
-                class="inline-flex items-center px-3 py-2 rounded-full bg-white text-sky-600 font-medium shadow hover:bg-slate-100 transition"
-              >
-                <span>View</span>
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  class="h-5 w-5 ml-2"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M9 5l7 7-7 7"
-                  />
-                </svg>
-              </a>
-            </div>
-          </article>
-          <!-- end expense-tracker-app -->
-
-          <!-- ========== Flutter Projects ========== -->
-
-          <!-- start nutritrack-app -->
-          <article
-            data-category="flutter android"
-            class="card rounded-3xl p-6 border bg-gradient-to-b from-gray-500 to-indigo-900 shadow flex flex-col justify-between"
-          >
-            <div>
-              <h3 class="text-xl font-bold text-white">NutriTrack</h3>
-              <p class="mt-2 text-sm text-slate-100">Flutter • Firebase</p>
-            </div>
-            <!-- Arrow Button -->
-            <div class="mt-4 flex justify-end">
-              <a
-                href="projects/nutritrack-app.html"
-                class="inline-flex items-center px-3 py-2 rounded-full bg-white text-sky-600 font-medium shadow hover:bg-slate-100 transition"
-              >
-                <span>Uploading soon...</span>
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  class="h-5 w-5 ml-2"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M9 5l7 7-7 7"
-                  />
-                </svg>
-              </a>
-            </div>
-          </article>
-          <!-- end nutritrack-app -->
+                transition duration-300 relative overflow-hidden">
+            Flutter
+          </button>
+        </div>
+        <div class="gap-4 mt-4">
+          <button data-filter="selenium" class="filter-btn px-6 py-2 rounded-full font-medium shadow-lg text-white 
+                bg-gradient-to-r from-yellow-400 to-rose-500 
+                hover:from-yellow-500 hover:to-rose-600 
+                transition duration-300 relative overflow-hidden">
+            Selenium
+          </button>
         </div>
       </div>
-    </section>
-    <!-- ================== END PROJECTS SECTION ================== -->
 
-    <!-- Footer -->
-    <footer class="py-10">
-      <div
-        class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 text-center text-sm text-slate-500"
-      >
-        <p>
-          © <span id="year"></span> Saqib Javed. Built with ❤️ on GitHub Pages.
-        </p>
+
+  </section>
+
+  <!-- ================== START PROJECTS SECTION ================== -->
+  <section id="projects" class="py-16 sm:py-20">
+    <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+        <!-- ========== ML Projects ========== -->
+        <!-- start image-captioning -->
+        <article data-category="ml"
+          class="relative card rounded-3xl p-6 border bg-gradient-to-br from-gray-900 to-indigo-800 shadow flex flex-col justify-between">
+          <!-- Badge -->
+          <div class="absolute top-3 right-3">
+            <span
+              class="inline-flex items-center justify-center w-8 h-8 rounded-full bg-sky-500 text-white text-sm">👤</span>
+          </div>
+          <div>
+            <h3 class="text-xl font-bold text-white">Image Captioning using BLIP</h3>
+            <p class="mt-2 text-sm text-slate-100">ML • LAVIS project</p>
+          </div>
+          <div class="mt-4 flex justify-end">
+            <a href="https://huggingface.co/spaces/jvedsaqib/Future_On" target="_blank"
+              class="inline-flex items-center px-3 py-2 rounded-full bg-emerald-500 text-white font-medium shadow hover:bg-emerald-600 transition">
+              <span>Demo</span>
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2" fill="none" viewBox="0 0 24 24"
+                stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+              </svg>
+            </a>
+          </div>
+        </article>
+        <!-- end image-captioning -->
+
+        <!-- start bangla-news-classifier -->
+        <article data-category="ml"
+          class="relative card rounded-3xl p-6 border bg-gradient-to-br from-gray-900 to-indigo-800 shadow flex flex-col justify-between">
+          <!-- Badge -->
+          <div class="absolute top-3 right-3">
+            <span
+              class="inline-flex items-center justify-center w-8 h-8 rounded-full bg-emerald-500 text-white text-sm">👥</span>
+          </div>
+          <div>
+            <h3 class="text-xl font-bold text-white">Bangla News Classifier</h3>
+            <p class="mt-2 text-sm text-slate-100">ML • NLP project with Python & TensorFlow</p>
+          </div>
+          <div class="mt-4 flex gap-2 justify-end">
+            <a href="bangla-news-classifier/"
+              class="inline-flex items-center px-3 py-2 rounded-full bg-sky-500 text-white font-medium shadow hover:bg-sky-600 transition">
+              <span>View</span>
+            </a>
+            <a href="https://github.com/jvedsaqib/bangla_news_classifier" target="_blank"
+              class="inline-flex items-center px-3 py-2 rounded-full bg-gray-800 text-white font-medium shadow hover:bg-gray-900 transition">
+              <span>Repo</span>
+            </a>
+          </div>
+        </article>
+        <!-- end bangla-news-classifier -->
+
+        <!-- start opinion-mining -->
+        <article data-category="ml"
+          class="relative card rounded-3xl p-6 border bg-gradient-to-br from-gray-900 to-indigo-800 shadow flex flex-col justify-between">
+          <!-- Badge -->
+          <div class="absolute top-3 right-3">
+            <span
+              class="inline-flex items-center justify-center w-8 h-8 rounded-full bg-emerald-500 text-white text-sm">👥</span>
+          </div>
+          <div>
+            <h3 class="text-xl font-bold text-white">Bengali Social Media Celebrity Opinions</h3>
+            <p class="mt-2 text-sm text-slate-100">ML • Sentiment Analysis with Python & TensorFlow</p>
+          </div>
+          <div class="mt-4 flex justify-end">
+            <a href="projects/opinion-mining.html"
+              class="inline-flex items-center px-3 py-2 rounded-full bg-gray-400 text-gray-900 font-medium shadow pointer-events-none">
+              <span>Uploading soon...</span>
+            </a>
+          </div>
+        </article>
+        <!-- end opinion-mining -->
+
+        <!-- ========== PHP Projects ========== -->
+        <!-- start placement-management-system -->
+        <article data-category="php"
+          class="relative card rounded-3xl p-6 border bg-gradient-to-br from-gray-900 to-indigo-800 shadow flex flex-col justify-between">
+          <!-- Badge -->
+          <div class="absolute top-3 right-3">
+            <span
+              class="inline-flex items-center justify-center w-8 h-8 rounded-full bg-sky-500 text-white text-sm">👤</span>
+          </div>
+          <div>
+            <h3 class="text-xl font-bold text-white">Placement Management System</h3>
+            <p class="mt-2 text-sm text-slate-100">PHP • MySQL • Database management</p>
+          </div>
+          <div class="mt-4 flex justify-end">
+            <a href="https://github.com/jvedsaqib/miniproject"
+              class="inline-flex items-center px-3 py-2 rounded-full bg-sky-500 text-white font-medium shadow hover:bg-sky-600 transition">
+              <span>View</span>
+            </a>
+          </div>
+        </article>
+        <!-- end placement-management-system -->
+
+        <!-- start cafeteria-management-system -->
+        <article data-category="php"
+          class="relative card rounded-3xl p-6 border bg-gradient-to-br from-gray-900 to-indigo-800 shadow flex flex-col justify-between">
+          <!-- Badge -->
+          <div class="absolute top-3 right-2">
+            <span
+              class="inline-flex items-center justify-center w-8 h-8 rounded-full bg-sky-500 text-white text-sm">👤</span>
+          </div>
+          <div>
+            <h3 class="text-xl font-bold text-white">Cafeteria Management System</h3>
+            <p class="mt-2 text-sm text-slate-100">PHP • MySQL • Inventory & Billing</p>
+          </div>
+          <div class="mt-4 flex justify-end">
+            <a href="https://github.com/jvedsaqib/cafe_management"
+              class="inline-flex items-center px-3 py-2 rounded-full bg-sky-500 text-white font-medium shadow hover:bg-sky-600 transition">
+              <span>View</span>
+            </a>
+          </div>
+        </article>
+        <!-- end cafeteria-management-system -->
+
+        <!-- ========== Android Projects ========== -->
+        <!-- start boiimela -->
+        <article data-category="android"
+          class="relative card rounded-3xl p-6 border bg-gradient-to-br from-gray-900 to-indigo-800 shadow flex flex-col justify-between">
+          <!-- Badge -->
+          <div class="absolute top-3 right-2">
+            <span
+              class="inline-flex items-center justify-center w-8 h-8 rounded-full bg-emerald-500 text-white text-sm">👥</span>
+          </div>
+          <div>
+            <h3 class="text-xl font-bold text-white">BoiiMela: Used books selling and buying</h3>
+            <p class="mt-2 text-sm text-slate-100">Android • Java • Firebase</p>
+          </div>
+          <div class="mt-4 flex justify-end">
+            <a href="https://github.com/jvedsaqib/BoiiMela" target="_blank"
+              class="inline-flex items-center px-3 py-2 rounded-full bg-sky-500 text-white font-medium shadow hover:bg-sky-600 transition">
+              <span>View</span>
+            </a>
+          </div>
+        </article>
+        <!-- end boiimela -->
+
+        <!-- ========== Flutter Projects ========== -->
+        <!-- start nutritrack-app -->
+        <article data-category="flutter android"
+          class="relative card rounded-3xl p-6 border bg-gradient-to-br from-gray-900 to-indigo-800 shadow flex flex-col justify-between">
+          <!-- Badge -->
+          <div class="absolute top-3 right-3">
+            <span
+              class="inline-flex items-center justify-center w-8 h-8 rounded-full bg-sky-500 text-white text-sm">👤</span>
+          </div>
+          <div>
+            <h3 class="text-xl font-bold text-white">NutriTrack</h3>
+            <p class="mt-2 text-sm text-slate-100">Flutter • Firebase</p>
+          </div>
+          <div class="mt-4 flex justify-end pointer-events-none">
+            <a href="projects/nutritrack-app.html"
+              class="inline-flex items-center px-3 py-2 rounded-full bg-gray-400 text-gray-900 font-medium shadow">
+              <span>Uploading soon...</span>
+            </a>
+          </div>
+        </article>
+        <!-- end nutritrack-app -->
+
       </div>
-    </footer>
+    </div>
+  </section>
+  <!-- ================== END PROJECTS SECTION ================== -->
 
-    <script>
-      // Filtering logic
-      const filterButtons = document.querySelectorAll(".filter-btn");
-      const projectCards = document.querySelectorAll("#projects article");
 
-      filterButtons.forEach((button) => {
-        button.addEventListener("click", () => {
-          const filter = button.dataset.filter;
-          projectCards.forEach((card) => {
-            if (filter === "all" || card.dataset.category.includes(filter)) {
-              card.classList.remove("hidden");
-            } else {
-              card.classList.add("hidden");
-            }
-          });
+  <!-- Footer -->
+  <footer class="py-10">
+    <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 text-center text-sm text-slate-500">
+      <p>
+        © <span id="year"></span> Saqib Javed. Built with ❤️ on GitHub Pages.
+      </p>
+    </div>
+  </footer>
+
+  <script>
+    // Filtering logic
+    const filterButtons = document.querySelectorAll(".filter-btn");
+    const projectCards = document.querySelectorAll("#projects article");
+
+    filterButtons.forEach((button) => {
+      button.addEventListener("click", () => {
+        // Highlight active button
+        filterButtons.forEach((btn) => btn.classList.remove("ring-2", "ring-offset-2", "ring-sky-500"));
+        button.classList.add("ring-2", "ring-offset-2", "ring-sky-500");
+
+        const filter = button.dataset.filter;
+
+        projectCards.forEach((card) => {
+          card.classList.add("fade"); // apply transition state
+          if (filter === "all" || card.dataset.category.includes(filter)) {
+            card.classList.remove("hidden");
+            setTimeout(() => card.classList.add("show"), 50); // fade in
+          } else {
+            card.classList.remove("show"); // fade out
+            setTimeout(() => card.classList.add("hidden"), 300);
+          }
         });
       });
-    </script>
-  </body>
+    });
+  </script>
+</body>
+
 </html>
