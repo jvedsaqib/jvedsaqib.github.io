@@ -15,10 +15,24 @@
     />
     <meta property="og:type" content="website" />
     <meta name="theme-color" content="#0ea5e9" />
-    <link rel="apple-touch-icon" sizes="180x180" href="assets/images/favicon/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicon/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon/favicon-16x16.png">
-    <link rel="manifest" href="assets/images/favicon/site.webmanifest">
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="assets/images/favicon/apple-touch-icon.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="assets/images/favicon/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="assets/images/favicon/favicon-16x16.png"
+    />
+    <link rel="manifest" href="assets/images/favicon/site.webmanifest" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -224,11 +238,16 @@
         <div class="mt-8 grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           <!-- Project 1 -->
           <article
-            class="card rounded-3xl p-6 border border-slate-200 dark:border-slate-800 bg-white/70 dark:bg-slate-900/60 shadow"
+            class="card rounded-3xl border border-slate-200 bg-white/70 p-6 shadow dark:border-slate-800 dark:bg-slate-900/60"
           >
-            <div class="text-xs text-slate-500">ML • Sentiment</div>
+            <div class="grid grid-flow-col justify-between">
+              <div class="text-xs text-slate-500">ML • Sentiment</div>
+              <div class="rounded border p-0.5 text-xs border-sky-400">
+                Group
+              </div>
+            </div>
             <h3 class="mt-1 text-xl font-bold">
-              Bengali Celebrity Opinion Profiling
+              Bengali Social Media Celebrity Opinions
             </h3>
             <p class="mt-2 text-sm text-slate-600 dark:text-slate-300">
               Analyzed YouTube comments in Bengali to profile public sentiment
@@ -254,7 +273,12 @@
           <article
             class="card rounded-3xl p-6 border border-slate-200 dark:border-slate-800 bg-white/70 dark:bg-slate-900/60 shadow"
           >
-            <div class="text-xs text-slate-500">ML • NLP</div>
+            <div class="grid grid-flow-col justify-between">
+              <div class="text-xs text-slate-500">ML • NLP</div>
+              <div class="rounded border p-0.5 text-xs border-sky-400">
+                Group
+              </div>
+            </div>
             <h3 class="mt-1 text-xl font-bold">Bangla News Classifier</h3>
             <p class="mt-2 text-sm text-slate-600 dark:text-slate-300">
               Comparative study of models (LSTM, Naive Bayes, Random Forest,
@@ -283,7 +307,12 @@
           <article
             class="card rounded-3xl p-6 border border-slate-200 dark:border-slate-800 bg-white/70 dark:bg-slate-900/60 shadow"
           >
-            <div class="text-xs text-slate-500">Android</div>
+            <div class="grid grid-flow-col justify-between">
+              <div class="text-xs text-slate-500">Android</div>
+              <div class="rounded border p-0.5 text-xs border-sky-400">
+                Group
+              </div>
+            </div>
             <h3 class="mt-1 text-xl font-bold">BoiiMela</h3>
             <p class="mt-2 text-sm text-slate-600 dark:text-slate-300">
               Android app for buying & selling second-hand books. Led backend
@@ -304,7 +333,6 @@
               >
             </div>
           </article>
-          
         </div>
       </div>
     </section>
@@ -368,7 +396,7 @@
                   MCA — Heritage Institute of Technology (MAKAUT)
                 </div>
                 <div class="text-slate-600 dark:text-slate-300">
-                  2023 – Present • 91.9%
+                  2023 – 2025 • 91.9%
                 </div>
               </li>
               <li>
@@ -398,23 +426,198 @@
               </li>
             </ul>
           </div>
+          <!-- Achievements -->
           <div
             class="rounded-3xl p-6 border border-slate-200 dark:border-slate-800 bg-white/70 dark:bg-slate-900/60"
           >
             <h3 class="font-bold">Achievements & Activities</h3>
             <ul class="mt-3 space-y-3 text-sm">
-              <li>Bronze Medalist — B.Sc. Computer Science (2023)</li>
-              <li>Top 50 Mentor — GSSoC '24 Extended</li>
-              <li>Mentor — GirlsScript Summer of Code (Oct 2024)</li>
-              <li>
+              <li id="GDC">Bronze Medalist — B.Sc. Computer Science (2023)</li>
+              <li id="gssoc-top-50">Top 50 Mentor — GSSoC '24 Extended</li>
+              <li id="gssoc">Mentor — GirlsScript Summer of Code (Oct 2024)</li>
+              <li id="hackheritage">
                 Participant — Prototyped a chatbot concept and successfully
                 built the image captioning module during a 24-hour hackathon,
                 applying computer vision and NLP techniques.
               </li>
             </ul>
+            <script>
+              document
+                .getElementById("GDC")
+                .addEventListener("mouseover", () =>
+                  console.log("Hovered GDC")
+                );
+            </script>
           </div>
         </div>
       </div>
+
+      <!-- Certificate Carousel -->
+      <div class="mt-12 flex w-full justify-center">
+        <!-- Viewport -->
+        <div
+          id="carouselViewport"
+          class="relative w-full m-4 max-w-3xl overflow-hidden rounded-2xl shadow-lg bg-slate-800 dark:bg-slate-900"
+        >
+          <!-- Track -->
+          <div
+            id="carouselTrack"
+            class="flex transition-transform duration-500 ease-out"
+          >
+            <!-- Slide 1 -->
+            <div class="flex-none w-full flex flex-col">
+              <!-- Image area with blur -->
+              <div class="relative">
+                <div
+                  class="pointer-events-none absolute inset-0 bg-sky-500 blur-3xl opacity-20"
+                ></div>
+                <img
+                  src="assets/images/Certificates/GSSoC.jpg"
+                  alt="GSSoC Mentor Certificate"
+                  class="relative w-full max-h-[55vh] sm:max-h-[70vh] object-contain bg-gray-50 p-4 rounded-t-2xl"
+                />
+              </div>
+              <!-- Caption -->
+              <div class="bg-slate-800 dark:bg-slate-900 px-4 py-3 text-center">
+                <p
+                  class="text-gray-200 dark:text-gray-300 font-medium text-sm sm:text-base"
+                >
+                  Mentor Certificate from GSSoC
+                </p>
+              </div>
+            </div>
+
+            <!-- Slide 2 -->
+            <div class="flex-none w-full flex flex-col">
+              <div class="relative">
+                <div
+                  class="pointer-events-none absolute inset-0 bg-sky-500 blur-3xl opacity-20"
+                ></div>
+                <img
+                  src="assets/images/Certificates/GDC.jpg"
+                  alt="GDC Bronze Medal"
+                  class="relative w-full max-h-[55vh] sm:max-h-[70vh] object-contain bg-gray-50 p-4 rounded-t-2xl"
+                />
+              </div>
+              <div class="bg-slate-800 dark:bg-slate-900 px-4 py-3 text-center">
+                <p
+                  class="text-gray-200 dark:text-gray-300 font-medium text-sm sm:text-base"
+                >
+                  Certificate & Bronze Medal – 3rd in BSc Comp Sci
+                </p>
+              </div>
+            </div>
+
+            <!-- Slide 3 -->
+            <div class="flex-none w-full flex flex-col">
+              <div class="relative">
+                <div
+                  class="pointer-events-none absolute inset-0 bg-sky-500 blur-3xl opacity-20"
+                ></div>
+                <img
+                  src="assets/images/Certificates/HACKHERITAGE.png"
+                  alt="HackHeritage Participation"
+                  class="relative w-full max-h-[55vh] sm:max-h-[70vh] object-contain bg-gray-50 p-4 rounded-t-2xl"
+                />
+              </div>
+              <div class="bg-slate-800 dark:bg-slate-900 px-4 py-3 text-center">
+                <p
+                  class="text-gray-200 dark:text-gray-300 font-medium text-sm sm:text-base"
+                >
+                  HackHeritage Participation Certificate
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Controls + Indicators -->
+      <div class="flex flex-col items-center gap-4 mt-4">
+        <!-- Buttons -->
+        <div class="flex justify-center gap-6">
+          <button
+            id="prev"
+            class="px-5 py-2 bg-sky-600 hover:bg-sky-700 text-white rounded-lg shadow-md text-sm sm:text-base"
+          >
+            ‹ Prev
+          </button>
+          <button
+            id="next"
+            class="px-5 py-2 bg-sky-600 hover:bg-sky-700 text-white rounded-lg shadow-md text-sm sm:text-base"
+          >
+            Next ›
+          </button>
+        </div>
+        <!-- Dots -->
+        <div id="indicators" class="flex gap-2"></div>
+      </div>
+
+      <script>
+        const viewport = document.getElementById("carouselViewport");
+        const track = document.getElementById("carouselTrack");
+        const slideCount = track.children.length;
+        const indicators = document.getElementById("indicators");
+
+        let index = 0;
+        let autoSlide;
+
+        // Create dots dynamically
+        const dots = [];
+        for (let i = 0; i < slideCount; i++) {
+          const dot = document.createElement("button");
+          dot.className =
+            "w-3 h-3 rounded-full bg-gray-400 dark:bg-gray-600 transition";
+          dot.addEventListener("click", () => {
+            index = i;
+            update();
+            resetAutoSlide();
+          });
+          indicators.appendChild(dot);
+          dots.push(dot);
+        }
+
+        function update() {
+          const width = viewport.clientWidth;
+          track.style.transform = `translateX(-${index * width}px)`;
+          dots.forEach((d, i) => {
+            d.className =
+              "w-3 h-3 rounded-full transition " +
+              (i === index ? "bg-sky-600" : "bg-gray-400 dark:bg-gray-600");
+          });
+        }
+
+        document.getElementById("next").addEventListener("click", () => {
+          index = (index + 1) % slideCount;
+          update();
+          resetAutoSlide();
+        });
+
+        document.getElementById("prev").addEventListener("click", () => {
+          index = (index - 1 + slideCount) % slideCount;
+          update();
+          resetAutoSlide();
+        });
+
+        // Auto slide
+        function startAutoSlide() {
+          autoSlide = setInterval(() => {
+            index = (index + 1) % slideCount;
+            update();
+          }, 7000); // every 4s
+        }
+
+        function resetAutoSlide() {
+          clearInterval(autoSlide);
+          startAutoSlide();
+        }
+
+        window.addEventListener("resize", update);
+        window.addEventListener("orientationchange", update);
+
+        update();
+        startAutoSlide();
+      </script>
     </section>
 
     <!-- Contact -->
