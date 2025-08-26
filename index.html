@@ -112,13 +112,65 @@
           <a class="hover:text-sky-500" href="#skills">Skills</a>
           <a class="hover:text-sky-500" href="#education">Education</a>
           <a class="hover:text-sky-500" href="#contact">Contact</a>
-          <a
-            class="inline-flex items-center gap-2 px-3 py-1.5 rounded-xl border border-sky-400/50 hover:bg-sky-500/10"
-            href="assets/cv/SAQIB-JAVED-CV.pdf"
-            download
-          >
-            <span>Download CV</span>
-          </a>
+          <div class="relative inline-block text-left" id="cvDropdown">
+            <!-- CV Button -->
+            <button
+              id="cvButton"
+              class="inline-flex items-center gap-2 px-3 py-1.5 rounded-xl border border-sky-400/50 hover:bg-sky-500/10"
+            >
+              CV
+              <svg
+                class="w-4 h-4"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M19 9l-7 7-7-7"
+                />
+              </svg>
+            </button>
+
+            <div
+              id="cvMenu"
+              class="hidden absolute right-0 mt-2 w-40 bg-white border border-gray-200 rounded-xl shadow-lg z-10"
+            >
+              <a
+                href="assets/cv/SAQIB-JAVED-CV.pdf"
+                target="_blank"
+                class="block px-4 py-2 text-sm text-gray-700 hover:bg-sky-100 rounded-t-xl"
+              >
+                View CV
+              </a>
+              <a
+                href="assets/cv/SAQIB-JAVED-CV.pdf"
+                download
+                class="block px-4 py-2 text-sm text-gray-700 hover:bg-sky-100 rounded-b-xl"
+              >
+                Download CV
+              </a>
+            </div>
+          </div>
+
+          <script>
+            const cvButton = document.getElementById("cvButton");
+            const cvMenu = document.getElementById("cvMenu");
+            const cvDropdown = document.getElementById("cvDropdown");
+
+            cvButton.addEventListener("click", (e) => {
+              e.stopPropagation();
+              cvMenu.classList.toggle("hidden");
+            });
+
+            document.addEventListener("click", (e) => {
+              if (!cvDropdown.contains(e.target)) {
+                cvMenu.classList.add("hidden");
+              }
+            });
+          </script>
         </nav>
       </div>
     </header>

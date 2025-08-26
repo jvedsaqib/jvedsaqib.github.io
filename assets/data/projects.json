@@ -1,0 +1,66 @@
+[
+  {
+    "title": "Image Captioning using BLIP",
+    "category": "ml",
+    "badge": "👤",
+    "description": "ML • LAVIS project",
+    "links": [
+      { "label": "Demo", "url": "https://huggingface.co/spaces/jvedsaqib/Future_On", "style": "emerald" }
+    ]
+  },
+  {
+    "title": "Bangla News Classifier",
+    "category": "ml",
+    "badge": "👥",
+    "description": "ML • NLP project with Python & TensorFlow",
+    "links": [
+      { "label": "View", "url": "bangla-news-classifier/", "style": "sky" },
+      { "label": "Repo", "url": "https://github.com/jvedsaqib/bangla_news_classifier", "style": "gray" }
+    ]
+  },
+  {
+    "title": "Bengali Social Media Celebrity Opinions",
+    "category": "ml",
+    "badge": "👥",
+    "description": "ML • Sentiment Analysis with Python & TensorFlow",
+    "links": [
+      { "label": "Uploading soon...", "url": "#", "style": "disabled" }
+    ]
+  },
+  {
+    "title": "Placement Management System",
+    "category": "php",
+    "badge": "👤",
+    "description": "PHP • MySQL • Database management",
+    "links": [
+      { "label": "Repo", "url": "https://github.com/jvedsaqib/miniproject", "style": "gray" }
+    ]
+  },
+  {
+    "title": "Cafeteria Management System",
+    "category": "php",
+    "badge": "👤",
+    "description": "PHP • MySQL • Inventory & Billing",
+    "links": [
+      { "label": "Repo", "url": "https://github.com/jvedsaqib/cafe_management", "style": "gray" }
+    ]
+  },
+  {
+    "title": "BoiiMela: Used books selling and buying",
+    "category": "android",
+    "badge": "👥",
+    "description": "Android • Java • Firebase",
+    "links": [
+      { "label": "Repo", "url": "https://github.com/jvedsaqib/BoiiMela", "style": "gray" }
+    ]
+  },
+  {
+    "title": "NutriTrack",
+    "category": "flutter android",
+    "badge": "👤",
+    "description": "Flutter • Firebase",
+    "links": [
+      { "label": "Uploading soon...", "url": "#", "style": "disabled" }
+    ]
+  }
+]
