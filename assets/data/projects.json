@@ -55,12 +55,12 @@
     ]
   },
   {
-    "title": "NutriTrack",
-    "category": "flutter android",
+    "title": "YouTube Bengali Comment Extractor",
+    "category": "python selenium",
     "badge": "👤",
-    "description": "Flutter • Firebase",
+    "description": "Scraping • Selenium • YouTube",
     "links": [
-      { "label": "Uploading soon...", "url": "#", "style": "disabled" }
+      { "label": "View", "url": "youtube-bengali-comment-scraper", "style": "sky" }
     ]
   }
 ]
