@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -14,6 +14,7 @@
       content="Projects in ML, Android, and data. Java, Python, Firebase."
     />
     <meta property="og:type" content="website" />
+    <link rel="canonical" href="https://jvedsaqib.github.io/" />
     <meta name="theme-color" content="#0ea5e9" />
     <link
       rel="apple-touch-icon"
@@ -41,6 +42,20 @@
     />
     <!-- Tailwind via CDN for quick start. For production, consider self-hosting or a build step. -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      if (
+        localStorage.theme === "dark" ||
+        (!("theme" in localStorage) &&
+          window.matchMedia("(prefers-color-scheme: dark)").matches)
+      ) {
+        document.documentElement.classList.add("dark");
+      }
+    </script>
+    <script>
+      tailwind.config = {
+        darkMode: "class",
+      };
+    </script>
     <style>
       :root {
         color-scheme: light dark;
@@ -104,16 +119,28 @@
       <div
         class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 py-3 flex items-center justify-between"
       >
-        <a href="#home" class="font-extrabold tracking-tight text-xl"
-          >SJ<span class="text-sky-500">.</span></a
-        >
+        <a href="#home" class="font-extrabold tracking-tight text-xl">
+          SJ<span class="text-sky-500">.</span>
+        </a>
+
+        <!-- Desktop Nav -->
         <nav class="hidden sm:flex items-center gap-6 text-sm">
           <a class="hover:text-sky-500" href="#projects">Projects</a>
           <a class="hover:text-sky-500" href="#skills">Skills</a>
           <a class="hover:text-sky-500" href="#education">Education</a>
           <a class="hover:text-sky-500" href="#contact">Contact</a>
+
+          <!-- Theme toggle (desktop) -->
+          <button
+            type="button"
+            class="theme-toggle ml-2 p-2 rounded-xl border border-slate-400/40 hover:bg-sky-500/10"
+            aria-label="Toggle dark mode"
+          >
+            ☀️
+          </button>
+
+          <!-- CV Dropdown (desktop) -->
           <div class="relative inline-block text-left" id="cvDropdown">
-            <!-- CV Button -->
             <button
               id="cvButton"
               class="inline-flex items-center gap-2 px-3 py-1.5 rounded-xl border border-sky-400/50 hover:bg-sky-500/10"
@@ -133,51 +160,68 @@
                 />
               </svg>
             </button>
-
             <div
               id="cvMenu"
-              class="hidden absolute right-0 mt-2 w-40 bg-white border border-gray-200 rounded-xl shadow-lg z-10"
+              class="hidden absolute right-0 mt-2 w-40 bg-white dark:bg-slate-800 border border-gray-200 dark:border-slate-700 rounded-xl shadow-lg z-10"
             >
               <a
                 href="assets/cv/SAQIB-JAVED-CV.pdf"
                 target="_blank"
-                class="block px-4 py-2 text-sm text-gray-700 hover:bg-sky-100 rounded-t-xl"
+                class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-sky-100 dark:hover:bg-slate-700 rounded-t-xl"
+                >View CV</a
               >
-                View CV
-              </a>
               <a
                 href="assets/cv/SAQIB-JAVED-CV.pdf"
                 download
-                class="block px-4 py-2 text-sm text-gray-700 hover:bg-sky-100 rounded-b-xl"
+                class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-sky-100 dark:hover:bg-slate-700 rounded-b-xl"
+                >Download CV</a
               >
-                Download CV
-              </a>
             </div>
           </div>
-
-          <script>
-            const cvButton = document.getElementById("cvButton");
-            const cvMenu = document.getElementById("cvMenu");
-            const cvDropdown = document.getElementById("cvDropdown");
-
-            cvButton.addEventListener("click", (e) => {
-              e.stopPropagation();
-              cvMenu.classList.toggle("hidden");
-            });
-
-            document.addEventListener("click", (e) => {
-              if (!cvDropdown.contains(e.target)) {
-                cvMenu.classList.add("hidden");
-              }
-            });
-          </script>
         </nav>
+
+        <!-- Mobile: only theme toggle + CV -->
+        <div class="flex sm:hidden items-center gap-3">
+          <button
+            type="button"
+            class="theme-toggle p-2 rounded-xl border border-slate-400/40 hover:bg-sky-500/10"
+            aria-label="Toggle dark mode"
+          >
+            ☀️
+          </button>
+
+          <a
+            href="assets/cv/SAQIB-JAVED-CV.pdf"
+            target="_blank"
+            class="px-3 py-1.5 rounded-xl border border-sky-400/50 hover:bg-sky-500/10"
+          >
+            CV
+          </a>
+        </div>
       </div>
     </header>
 
+    <!-- CV dropdown script (desktop) -->
+    <script>
+      const cvButton = document.getElementById("cvButton");
+      const cvMenu = document.getElementById("cvMenu");
+      const cvDropdown = document.getElementById("cvDropdown");
+
+      if (cvButton) {
+        cvButton.addEventListener("click", (e) => {
+          e.stopPropagation();
+          cvMenu.classList.toggle("hidden");
+        });
+        document.addEventListener("click", (e) => {
+          if (!cvDropdown.contains(e.target)) cvMenu.classList.add("hidden");
+        });
+      }
+    </script>
+
+    <!-- breadcrumbs -->
     <section class="flex justify-center text-sm mt-2">
-      <nav class="flex space-x-1 text-gray-400">
-        <span class="font-semibold text-gray-200">🏠 Home</span>
+      <nav class="flex space-x-1 dark:text-gray-400">
+        <span class="font-semibold dark:text-gray-200">🏠 Home</span>
         <span>/</span>
       </nav>
     </section>
@@ -247,19 +291,19 @@
               >
                 <div class="grid grid-cols-2 gap-3 text-sm">
                   <div
-                    class="p-4 rounded-2xl bg-slate-50 dark:bg-slate-800/60 card"
+                    class="p-4 rounded-2xl bg-sky-100 dark:bg-slate-800/60 card"
                   >
                     <div class="text-xs text-slate-500">Languages</div>
                     <div class="mt-1 font-semibold">Java, Python</div>
                   </div>
                   <div
-                    class="p-4 rounded-2xl bg-slate-50 dark:bg-slate-800/60 card"
+                    class="p-4 rounded-2xl bg-sky-100 dark:bg-slate-800/60 card"
                   >
                     <div class="text-xs text-slate-500">Databases</div>
                     <div class="mt-1 font-semibold">MySQL, Firebase</div>
                   </div>
                   <div
-                    class="p-4 rounded-2xl bg-slate-50 dark:bg-slate-800/60 card"
+                    class="p-4 rounded-2xl bg-sky-100 dark:bg-slate-800/60 card"
                   >
                     <div class="text-xs text-slate-500">Tools</div>
                     <div class="mt-1 font-semibold">
@@ -267,7 +311,7 @@
                     </div>
                   </div>
                   <div
-                    class="p-4 rounded-2xl bg-slate-50 dark:bg-slate-800/60 card"
+                    class="p-4 rounded-2xl bg-sky-200 dark:bg-slate-800/60 card"
                   >
                     <div class="text-xs text-slate-500">Focus</div>
                     <div class="mt-1 font-semibold">ML • Android • Data</div>
@@ -745,5 +789,6 @@
     <script>
       document.getElementById("year").textContent = new Date().getFullYear();
     </script>
+    <script src="scripts/theme.js"></script>
   </body>
 </html>

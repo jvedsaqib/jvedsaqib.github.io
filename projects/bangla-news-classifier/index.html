@@ -38,6 +38,23 @@
       href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
       rel="stylesheet"
     />
+
+    <script>
+      if (
+        localStorage.theme === "dark" ||
+        (!("theme" in localStorage) &&
+          window.matchMedia("(prefers-color-scheme: dark)").matches)
+      ) {
+        document.documentElement.classList.add("dark");
+      }
+    </script>
+    <script>
+      tailwind.config = {
+        darkMode: "class",
+      };
+    </script>
+
+
     <style>
       :root {
         color-scheme: light dark;
@@ -73,7 +90,7 @@
   >
     <!-- Header -->
     <header
-      class="sticky top-0 z-50 bg-white/70 dark:bg-slate-900/70 backdrop-blur border-b border-slate-200 dark:border-slate-800"
+      class="sticky top-0 z-50 glass"
     >
       <div
         class="max-w-6xl mx-auto flex items-center justify-between px-6 py-3"
@@ -92,15 +109,16 @@
       </div>
     </header>
 
+    <!-- breadcrumbs -->
     <section class="flex justify-center text-sm mt-2">
-      <nav class="flex space-x-1 text-gray-400">
+      <nav class="flex space-x-1 dark:text-gray-400">
         <a href="/" class="text-sky-600 hover:underline flex items-center">
           🏠 Home
         </a>
         <span>/</span>
         <a href="/projects" class="text-sky-600 hover:underline">Projects</a>
         <span>/</span>
-        <span class="font-semibold text-gray-200">Bangla News Classifier</span>
+        <span class="font-semibold dark:text-gray-200">Bangla News Classifier</span>
       </nav>
     </section>
 
@@ -121,7 +139,7 @@
     <!-- Sections -->
     <section
       id="introduction"
-      class="py-16 bg-slate-50/60 dark:bg-slate-800/40"
+      class="py-16 bg-slate-200 dark:bg-slate-800/40"
     >
       <div class="max-w-6xl mx-auto px-6">
         <h2 class="text-3xl font-bold">Introduction</h2>
@@ -157,7 +175,8 @@
       </div>
     </section>
 
-    <section id="features" class="py-16 bg-slate-50/60 dark:bg-slate-800/40">
+    <!-- features -->
+    <section id="features" class="py-16 bg-slate-200 dark:bg-slate-800/40">
       <div class="max-w-6xl mx-auto px-6">
         <h2 class="text-3xl font-bold">Features</h2>
         <div class="mt-6 grid md:grid-cols-2 gap-6">
@@ -184,6 +203,7 @@
       </div>
     </section>
 
+    <!-- classifiers -->
     <section id="classifiers" class="py-16">
       <div class="max-w-6xl mx-auto px-6">
         <h2 class="text-3xl font-bold">Classifiers</h2>
@@ -905,7 +925,8 @@ svm_model = SVC(kernel="linear", C=1.0)
       </script>
     </section>
 
-    <section id="metrics" class="py-16 bg-slate-50/60 dark:bg-slate-800/40">
+    <!-- metrics -->
+    <section id="metrics" class="py-16 bg-slate-200 dark:bg-slate-800/40">
       <div class="max-w-6xl mx-auto px-6">
         <h2 class="text-3xl font-bold">Performance Metrics</h2>
         <p class="mt-4">
@@ -1074,6 +1095,7 @@ svm_model = SVC(kernel="linear", C=1.0)
       </script>
     </section>
 
+    <!-- future -->
     <section id="future" class="py-16">
       <div class="max-w-6xl mx-auto px-6">
         <h2 class="text-3xl font-bold">Future Scope</h2>
@@ -1087,7 +1109,8 @@ svm_model = SVC(kernel="linear", C=1.0)
       </div>
     </section>
 
-    <section id="references" class="py-16 bg-slate-50/60 dark:bg-slate-800/40">
+    <!-- references -->
+    <section id="references" class="py-16 bg-slate-200 dark:bg-slate-800/40">
       <div class="max-w-6xl mx-auto px-6">
         <h2 class="text-3xl font-bold">References</h2>
         <ul class="mt-4 space-y-2 text-sm list-disc list-inside">

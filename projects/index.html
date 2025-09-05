@@ -17,7 +17,28 @@
     <meta name="theme-color" content="#0ea5e9" />
     <link rel="icon" href="../assets/images/favicon/favicon-32x32.png" />
     <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      if (
+        localStorage.theme === "dark" ||
+        (!("theme" in localStorage) &&
+          window.matchMedia("(prefers-color-scheme: dark)").matches)
+      ) {
+        document.documentElement.classList.add("dark");
+      }
+    </script>
+    <script>
+      tailwind.config = {
+        darkMode: "class",
+      };
+    </script>
+    
     <style>
+      :root {
+        color-scheme: light dark;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
       body {
         font-family: "Inter", system-ui, sans-serif;
       }
@@ -65,25 +86,19 @@
         >
         <h3>jvedsaqib - PROJECTS</h3>
         <nav class="hidden sm:flex items-center gap-6 text-sm">
-          <a class="hover:text-sky-500" href="../">Portfolio</a>
-          <a
-            class="inline-flex items-center gap-2 px-3 py-1.5 rounded-xl border border-sky-400/50 hover:bg-sky-500/10"
-            href="../assets/cv/SAQIB-JAVED-CV.pdf"
-            download
-          >
-            <span>Download CV</span>
-          </a>
+          <a class="font-bold hover:text-sky-500" href="../">Portfolio</a>
         </nav>
       </div>
     </header>
 
+    <!-- breadcrumbs -->
     <section class="flex justify-center text-sm mt-2">
-      <nav class="flex space-x-1 text-gray-400">
+      <nav class="flex space-x-1 dark:text-gray-400">
         <a href="/" class="text-sky-600 hover:underline flex items-center">
           🏠 Home
         </a>
         <span>/</span>
-        <span class="font-semibold text-gray-200">Projects</span> <span>/</span>
+        <span class="font-semibold dark:text-gray-200">Projects</span> <span>/</span>
       </nav>
     </section>
 
@@ -186,8 +201,8 @@
             .join(" ");
 
           const card = `
-          <article data-category="${p.category}" class="card fade rounded-3xl p-6 border bg-gradient-to-br from-gray-900 to-indigo-800 shadow flex flex-col justify-between text-white">
-            <div class="absolute top-3 right-3"><span class="inline-flex items-center justify-center w-8 h-8 rounded-full bg-sky-500">${p.badge}</span></div>
+          <article data-category="${p.category}" class="card fade rounded-3xl p-6 hover:scale-110 border bg-gradient-to-br from-sky-400 to-sky-800 dark:bg-gradient-to-br dark:from-gray-900 dark:to-indigo-800 shadow flex flex-col justify-between text-white">
+            <div class="absolute top-3 right-3"><span class="inline-flex items-center justify-center w-6 h-6 rounded-full bg-sky-500">${p.badge}</span></div>
             <div>
               <h3 class="text-xl font-bold">${p.title}</h3>
               <p class="mt-2 text-sm text-slate-200">${p.description}</p>
@@ -226,5 +241,6 @@
       loadProjects();
       document.getElementById("year").textContent = new Date().getFullYear();
     </script>
+    <script src="../scripts/theme.js"></script>
   </body>
 </html>
