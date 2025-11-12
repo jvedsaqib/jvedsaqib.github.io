@@ -4,6 +4,7 @@
     "category": "ml",
     "badge": "👤",
     "description": "ML • LAVIS project",
+    "timeline": "SEP/24",
     "links": [
       { "label": "Demo", "url": "https://huggingface.co/spaces/jvedsaqib/Future_On", "style": "emerald" }
     ]
@@ -14,8 +15,7 @@
     "badge": "👥",
     "description": "ML • NLP project with Python & TensorFlow",
     "links": [
-      { "label": "View", "url": "bangla-news-classifier/", "style": "sky" },
-      { "label": "Repo", "url": "https://github.com/jvedsaqib/bangla_news_classifier", "style": "gray" }
+      { "label": "View", "url": "bangla-news-classifier/", "style": "sky" }
     ]
   },
   {
@@ -24,7 +24,7 @@
     "badge": "👥",
     "description": "ML • Sentiment Analysis with Python & TensorFlow",
     "links": [
-      { "label": "Uploading soon...", "url": "#", "style": "disabled" }
+      { "label": "Uploading Soon", "url": "opinion-mining-bengali/", "style": "disabled" }
     ]
   },
   {

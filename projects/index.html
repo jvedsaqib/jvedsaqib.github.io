@@ -86,8 +86,25 @@
         >
         <h3>jvedsaqib - PROJECTS</h3>
         <nav class="hidden sm:flex items-center gap-6 text-sm">
+          <!-- Theme toggle (desktop) -->
+          <button
+            type="button"
+            class="theme-toggle ml-2 p-2 rounded-xl border border-slate-400/40 hover:bg-sky-500/10"
+            aria-label="Toggle dark mode"
+          >
+            ☀️
+          </button>
           <a class="font-bold hover:text-sky-500" href="../">Portfolio</a>
         </nav>
+        <!-- Mobile: only theme toggle + CV -->
+        <div class="flex sm:hidden items-center gap-3">
+          <button
+            type="button"
+            class="theme-toggle p-2 rounded-xl border border-slate-400/40 hover:bg-sky-500/10"
+            aria-label="Toggle dark mode"
+          >
+            ☀️
+          </button>
       </div>
     </header>
 
@@ -178,69 +195,80 @@
 
     <!-- JS -->
     <script>
-      const grid = document.getElementById("projects-grid");
-      const filterButtons = document.querySelectorAll(".filter-btn");
+  const grid = document.getElementById("projects-grid");
+  const filterButtons = document.querySelectorAll(".filter-btn");
 
-      function renderProjects(projects) {
-        grid.innerHTML = "";
-        projects.forEach((p) => {
-          const links = p.links
-            .map((link) => {
-              let baseClass =
-                "inline-flex items-center px-3 py-2 rounded-full text-sm font-medium shadow transition";
-              if (link.style === "emerald")
-                return `<a href="${link.url}" target="_blank" class="${baseClass} bg-emerald-500 hover:bg-emerald-600 text-white">${link.label}</a>`;
-              if (link.style === "sky")
-                return `<a href="${link.url}" target="" class="${baseClass} bg-sky-500 hover:bg-sky-600 text-white">${link.label}</a>`;
-              if (link.style === "gray")
-                return `<a href="${link.url}" target="_blank" class="${baseClass} bg-gray-800 hover:bg-gray-900 text-white">${link.label}</a>`;
-              if (link.style === "disabled")
-                return `<span class="${baseClass} bg-gray-400 text-gray-900 pointer-events-none">${link.label}</span>`;
-              return "";
-            })
-            .join(" ");
+  function renderProjects(projects) {
+    grid.innerHTML = "";
+    projects.forEach((p) => {
+      const links = p.links
+        .map((link) => {
+          const baseClass =
+            "inline-flex items-center px-3 py-2 rounded-full text-sm font-medium shadow transition";
+          if (link.style === "emerald")
+            return `<a href="${link.url}" target="_blank" class="${baseClass} bg-emerald-500 hover:bg-emerald-600 text-white">${link.label}</a>`;
+          if (link.style === "sky")
+            return `<a href="${link.url}" target="_blank" class="${baseClass} bg-sky-500 hover:bg-sky-600 text-white">${link.label}</a>`;
+          if (link.style === "gray")
+            return `<a href="${link.url}" target="_blank" class="${baseClass} bg-gray-800 hover:bg-gray-900 text-white">${link.label}</a>`;
+          if (link.style === "disabled")
+            return `<span class="${baseClass} bg-gray-400 text-gray-900 pointer-events-none">${link.label}</span>`;
+          return "";
+        })
+        .join(" ");
 
-          const card = `
-          <article data-category="${p.category}" class="card fade rounded-3xl p-6 hover:scale-110 border bg-gradient-to-br from-sky-400 to-sky-800 dark:bg-gradient-to-br dark:from-gray-900 dark:to-indigo-800 shadow flex flex-col justify-between text-white">
-            <div class="absolute top-3 right-3"><span class="inline-flex items-center justify-center w-6 h-6 rounded-full bg-sky-500">${p.badge}</span></div>
-            <div>
-              <h3 class="text-xl font-bold">${p.title}</h3>
-              <p class="mt-2 text-sm text-slate-200">${p.description}</p>
-            </div>
-            <div class="mt-4 flex gap-2 justify-end">${links}</div>
-          </article>`;
-          grid.insertAdjacentHTML("beforeend", card);
-        });
+      const card = `
+        <article data-category="${p.category}" 
+          class="card fade relative rounded-3xl p-6 border bg-gradient-to-br from-sky-400 to-sky-800 dark:bg-gradient-to-br dark:from-gray-900 dark:to-indigo-800 shadow flex flex-col justify-between text-white transition-transform transform hover:scale-105 hover:shadow-lg duration-300">
+          <div class="absolute top-3 right-3">
+            <span class="inline-flex items-center justify-center w-6 h-6 rounded-full bg-sky-500">${p.badge}</span>
+          </div>
+          <div>
+            <h3 class="text-xl font-bold">${p.title}</h3>
+            <p class="mt-2 text-sm text-slate-200">${p.description}</p>
+            ${
+              p.timeline
+                ? `<p class="mt-3 text-xs text-slate-300 italic">🕒 ${p.timeline}</p>`
+                : ""
+            }
+          </div>
+          <div class="mt-4 flex flex-wrap gap-2 justify-end">${links}</div>
+        </article>`;
 
-        document.querySelectorAll("#projects-grid article").forEach((card) => {
-          setTimeout(() => card.classList.add("show"), 50);
-        });
-      }
+      grid.insertAdjacentHTML("beforeend", card);
+    });
 
-      async function loadProjects() {
-        const res = await fetch("../assets/data/projects.json");
-        const allProjects = await res.json();
-        renderProjects(allProjects);
+    document.querySelectorAll("#projects-grid article").forEach((card, i) => {
+      setTimeout(() => card.classList.add("show"), i * 100);
+    });
+  }
 
-        filterButtons.forEach((btn) => {
-          btn.addEventListener("click", () => {
-            filterButtons.forEach((b) =>
-              b.classList.remove("ring-2", "ring-offset-2", "ring-sky-500")
-            );
-            btn.classList.add("ring-2", "ring-offset-2", "ring-sky-500");
-            const filter = btn.dataset.filter;
-            const filtered =
-              filter === "all"
-                ? allProjects
-                : allProjects.filter((p) => p.category.includes(filter));
-            renderProjects(filtered);
-          });
-        });
-      }
+  async function loadProjects() {
+    const res = await fetch("../assets/data/projects.json");
+    const allProjects = await res.json();
+    renderProjects(allProjects);
 
-      loadProjects();
-      document.getElementById("year").textContent = new Date().getFullYear();
-    </script>
+    filterButtons.forEach((btn) => {
+      btn.addEventListener("click", () => {
+        filterButtons.forEach((b) =>
+          b.classList.remove("ring-2", "ring-offset-2", "ring-sky-500")
+        );
+        btn.classList.add("ring-2", "ring-offset-2", "ring-sky-500");
+
+        const filter = btn.dataset.filter;
+        const filtered =
+          filter === "all"
+            ? allProjects
+            : allProjects.filter((p) => p.category.includes(filter));
+        renderProjects(filtered);
+      });
+    });
+  }
+
+  loadProjects();
+  document.getElementById("year").textContent = new Date().getFullYear();
+</script>
+
     <script src="../scripts/theme.js"></script>
   </body>
 </html>
